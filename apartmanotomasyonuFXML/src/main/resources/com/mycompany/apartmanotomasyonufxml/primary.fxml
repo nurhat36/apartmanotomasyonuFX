@@ -33,9 +33,10 @@
                                           <Label layoutX="143.0" layoutY="27.0" prefHeight="18.0" prefWidth="79.0" text="Bina No" />
                                           <Label layoutX="143.0" layoutY="70.0" prefHeight="18.0" prefWidth="79.0" text="Daire No" />
                                           <Label layoutX="143.0" layoutY="117.0" prefHeight="18.0" prefWidth="79.0" text="Şifre" />
-                                          <PasswordField layoutX="143.0" layoutY="135.0" promptText="Lütfen Şifrenizi Giriniz" />
-                                          <Button layoutX="191.0" layoutY="198.0" mnemonicParsing="false" text="Giriş Yap" />
+                                          <PasswordField fx:id="kullanicigirispass" layoutX="143.0" layoutY="135.0" promptText="Lütfen Şifrenizi Giriniz" />
+                                          <Button layoutX="191.0" layoutY="198.0" mnemonicParsing="false" onAction="#kullanicigiris" text="Giriş Yap" />
                                           <Button layoutX="170.0" layoutY="238.0" mnemonicParsing="false" onAction="#switchTokulsifunut" text="Şifremi Unuttum" />
+                                          <Label fx:id="kul_gr_hata_lbli" layoutX="92.0" layoutY="274.0" prefHeight="18.0" prefWidth="260.0" />
                                        </children>
                                     </AnchorPane>
                               </content>
@@ -50,13 +51,14 @@
                                           <Label layoutX="143.0" layoutY="63.0" prefHeight="18.0" prefWidth="84.0" text="Daire No" />
                                           <Label layoutX="143.0" layoutY="109.0" prefHeight="18.0" prefWidth="84.0" text="Telefon No" />
                                           <Label layoutX="143.0" layoutY="153.0" prefHeight="18.0" prefWidth="84.0" text="E-Posta" />
-                                          <TextField layoutX="142.0" layoutY="127.0" promptText="0(555) 55 55" />
-                                          <TextField layoutX="142.0" layoutY="171.0" promptText="E-Postanızı giriniz" />
+                                          <TextField fx:id="kullanıcı_telefon_nokayıt_jtf1" layoutX="142.0" layoutY="127.0" promptText="0(555) 55 55" />
+                                          <TextField fx:id="kullanıci_e_posta_jtf1" layoutX="142.0" layoutY="171.0" promptText="E-Postanızı giriniz" />
                                           <Label layoutX="143.0" layoutY="197.0" prefHeight="18.0" prefWidth="84.0" text="Şİfre" />
-                                          <PasswordField layoutX="143.0" layoutY="215.0" />
+                                          <PasswordField fx:id="kullanici_kaydol_pass" layoutX="143.0" layoutY="215.0" />
                                           <Label layoutX="143.0" layoutY="241.0" prefHeight="18.0" prefWidth="84.0" text="Şifre Tekrarı" />
-                                          <PasswordField layoutX="142.0" layoutY="259.0" />
-                                          <Button layoutX="188.0" layoutY="294.0" mnemonicParsing="false" text="Kayıt Ol" />
+                                          <PasswordField fx:id="kullanici_kaydol_pass_tek" layoutX="142.0" layoutY="259.0" />
+                                          <Button layoutX="188.0" layoutY="294.0" mnemonicParsing="false" onAction="#kullanicikaydol" text="Kayıt Ol" />
+                                          <Label fx:id="kul_ky_hata_lbli" layoutX="61.0" layoutY="318.0" prefHeight="18.0" prefWidth="332.0" />
                                        </children>
                                     </AnchorPane>
                               </content>
@@ -92,19 +94,20 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextField layoutX="143.0" layoutY="30.0" promptText="Lütfen bina No'yu girinizi" />
-                                          <TextField layoutX="143.0" layoutY="76.0" promptText="Daire sayısını Giriniz" />
-                                          <TextField layoutX="144.0" layoutY="124.0" promptText="0(555) 55 55" />
-                                          <TextField layoutX="142.0" layoutY="171.0" promptText="E-Postanızı giriniz" />
-                                          <Button layoutX="236.0" layoutY="302.0" mnemonicParsing="false" text="Kayıt Ol" />
+                                          <TextField fx:id="yonetici_kayit_binano_jtf1" layoutX="143.0" layoutY="30.0" promptText="Lütfen bina No'yu girinizi" />
+                                          <TextField fx:id="yonetici_daire_sayisi_jtf1" layoutX="143.0" layoutY="76.0" promptText="Daire sayısını Giriniz" />
+                                          <TextField fx:id="yoneticici_telefon_nokayıt_jtf1" layoutX="144.0" layoutY="124.0" promptText="0(555) 55 55" />
+                                          <TextField fx:id="yonetici_e_posta_jtf1" layoutX="142.0" layoutY="171.0" promptText="E-Postanızı giriniz" />
+                                          <Button layoutX="236.0" layoutY="286.0" mnemonicParsing="false" onAction="#yön_kaydol" text="Kayıt Ol" />
                                           <Label layoutX="142.0" layoutY="56.0" prefHeight="18.0" prefWidth="82.0" text="Daire Sayisi" />
                                           <Label layoutX="142.0" layoutY="14.0" prefHeight="18.0" prefWidth="82.0" text="Bina No" />
                                           <Label layoutX="144.0" layoutY="105.0" prefHeight="18.0" prefWidth="82.0" text="Telefon No" />
                                           <Label layoutX="142.0" layoutY="150.0" prefHeight="18.0" prefWidth="82.0" text="E-posta" />
                                           <Label layoutX="142.0" layoutY="197.0" prefHeight="18.0" prefWidth="82.0" text="Şifre" />
                                           <Label layoutX="144.0" layoutY="242.0" prefHeight="18.0" prefWidth="82.0" text="Şifre Tekrarı" />
-                                          <PasswordField layoutX="143.0" layoutY="215.0" />
-                                          <PasswordField layoutX="144.0" layoutY="260.0" />
+                                          <PasswordField fx:id="yonetici_kaydol_pass" layoutX="143.0" layoutY="215.0" />
+                                          <PasswordField fx:id="yonetici_kaydol_pass_tek" layoutX="144.0" layoutY="260.0" />
+                                          <Label fx:id="yon_ky_hata_lbli" layoutX="101.0" layoutY="318.0" prefHeight="18.0" prefWidth="270.0" />
                                        </children>
                                     </AnchorPane>
                               </content>

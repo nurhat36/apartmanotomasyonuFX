@@ -1,16 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.apartmanotomasyonufxml.SecondaryController">
-    <children>
-        <Label text="Secondary View" />
-        <Button fx:id="secondaryButton" text="Switch to Primary View" onAction="#switchToPrimary" />
-    </children>
+<VBox alignment="CENTER" prefHeight="709.0" prefWidth="904.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.apartmanotomasyonufxml.SecondaryController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
+   <children>
+      <TabPane prefHeight="693.0" prefWidth="864.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab text="GELİRLER">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="Gelir_table" layoutX="-2.0" layoutY="137.0" prefHeight="510.0" prefWidth="870.0">
+                          <columns>
+                            <TableColumn fx:id="binaNoColumn" prefWidth="95.20001220703125" text="BİNA NO" />
+                            <TableColumn fx:id="daireNoColumn" text="DAİRE NO" />
+                              <TableColumn fx:id="tarihColumn" prefWidth="114.39996337890625" text="TARİH" />
+                              <TableColumn fx:id="miktarColumn" prefWidth="140.79998779296875" text="MİKTAR (TL)" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="36.0" layoutY="14.0" prefHeight="18.0" prefWidth="78.0" text="Miktar" />
+                        <Spinner fx:id="aidatmiktari" editable="true" layoutX="36.0" layoutY="32.0" />
+                        <Button layoutX="186.0" layoutY="32.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="103.0" text="Aidat Ödemesi" />
+                        <Label layoutX="36.0" layoutY="58.0" prefHeight="18.0" prefWidth="78.0" text="Daire No" />
+                        <ComboBox fx:id="daire_nocmb" layoutX="36.0" layoutY="76.0" prefHeight="26.0" prefWidth="153.0" />
+                        <Label layoutX="433.0" layoutY="14.0" prefHeight="18.0" prefWidth="78.0" text="Tarih" />
+                        <DatePicker fx:id="gelirtarih" layoutX="423.0" layoutY="32.0" />
+                        <Button layoutX="423.0" layoutY="77.0" mnemonicParsing="false" onAction="#aidat_geliri" text="ONAYLA" />
+                        <Label fx:id="butce1" layoutX="708.0" layoutY="15.0" prefHeight="18.0" prefWidth="132.0" text="Bütçe: " />
+                        <Label fx:id="aidat1" layoutX="708.0" layoutY="58.0" prefHeight="18.0" prefWidth="132.0" text="Aidat:" />
+                        <Label fx:id="gelir_on_hata_msj" layoutX="423.0" layoutY="103.0" prefHeight="18.0" prefWidth="242.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+          <Tab text="GİDERLER">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView layoutX="-7.0" layoutY="220.0" prefHeight="428.0" prefWidth="878.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
+                        <CheckBox fx:id="jCheckBox1" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#checkbox1" text="Elektrik" />
+                        <CheckBox fx:id="jCheckBox2" layoutX="14.0" layoutY="45.0" mnemonicParsing="false" onAction="#checkbox2" text="Su" />
+                        <CheckBox fx:id="jCheckBox3" layoutX="14.0" layoutY="70.0" mnemonicParsing="false" onAction="#checkbox3" text="Doğal Gaz" />
+                        <CheckBox fx:id="jCheckBox4" layoutX="14.0" layoutY="95.0" mnemonicParsing="false" onAction="#checkbox4" text="Bahçıvan" />
+                        <CheckBox fx:id="jCheckBox5" layoutX="14.0" layoutY="120.0" mnemonicParsing="false" onAction="#checkbox5" text="Asansör Bakımı" />
+                        <CheckBox fx:id="jCheckBox6" layoutX="14.0" layoutY="144.0" mnemonicParsing="false" onAction="#checkbox6" text="Diğer Giderler" />
+                        <TextField fx:id="diger_gider_tf" disable="true" layoutX="32.0" layoutY="188.0" prefHeight="26.0" prefWidth="195.0" promptText="Giderle ilgili Bilgi veriniz" />
+                        <Label layoutX="32.0" layoutY="169.0" prefHeight="18.0" prefWidth="194.0" text="Kısa gider bilgisi" />
+                        <DatePicker layoutX="255.0" layoutY="17.0" prefHeight="26.0" prefWidth="151.0" />
+                        <Label layoutX="255.0" prefHeight="18.0" prefWidth="194.0" text="Tarih" />
+                        <Label layoutX="255.0" layoutY="44.0" prefHeight="18.0" prefWidth="194.0" text="Miktar" />
+                        <Spinner editable="true" layoutX="255.0" layoutY="58.0" />
+                        <Button layoutX="255.0" layoutY="91.0" mnemonicParsing="false" text="Dekont Resmi Yükle" />
+                        <Label layoutX="255.0" layoutY="119.0" prefHeight="18.0" prefWidth="349.0" />
+                        <Button layoutX="255.0" layoutY="140.0" mnemonicParsing="false" text="Görüntüle" />
+                        <Button layoutX="331.0" layoutY="140.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="70.0" text="ONAYLA" />
+                        <Label layoutX="545.0" layoutY="12.0" prefHeight="18.0" prefWidth="194.0" text="Tablodaki dekont resmini görüntüle" />
+                        <Label layoutX="545.0" layoutY="44.0" prefHeight="18.0" prefWidth="194.0" text="Dekont ID" />
+                        <Spinner editable="true" layoutX="545.0" layoutY="58.0" />
+                        <Button layoutX="545.0" layoutY="91.0" mnemonicParsing="false" text="Dekont Resmi Görüntüle" />
+                        <Label layoutX="232.0" layoutY="192.0" prefHeight="18.0" prefWidth="289.0" />
+                        <Label fx:id="butce2" layoutX="634.0" layoutY="152.0" prefHeight="18.0" prefWidth="194.0" text="Bütçe:" />
+                        <Label fx:id="aidat2" layoutX="634.0" layoutY="178.0" prefHeight="18.0" prefWidth="194.0" text="Aidat" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="AİDAT BELİRLE">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="226.0" text="Aidatı Belirle" />
+                        <Spinner editable="true" layoutX="14.0" layoutY="32.0" />
+                        <Button layoutX="14.0" layoutY="70.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="ONAYLA" />
+                        <Label fx:id="aidat3" layoutX="190.0" layoutY="35.0" prefHeight="18.0" prefWidth="226.0" text="Şimdiki Aidat:" />
+                        <Label layoutX="14.0" layoutY="111.0" prefHeight="18.0" prefWidth="226.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
 </VBox>
