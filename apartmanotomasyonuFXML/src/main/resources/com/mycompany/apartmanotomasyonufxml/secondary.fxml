@@ -36,7 +36,6 @@
                         </TableView>
                         <Label layoutX="36.0" layoutY="14.0" prefHeight="18.0" prefWidth="78.0" text="Miktar" />
                         <Spinner fx:id="aidatmiktari" editable="true" layoutX="36.0" layoutY="32.0" />
-                        <Button layoutX="186.0" layoutY="32.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="103.0" text="Aidat Ödemesi" />
                         <Label layoutX="36.0" layoutY="58.0" prefHeight="18.0" prefWidth="78.0" text="Daire No" />
                         <ComboBox fx:id="daire_nocmb" layoutX="36.0" layoutY="76.0" prefHeight="26.0" prefWidth="153.0" />
                         <Label layoutX="433.0" layoutY="14.0" prefHeight="18.0" prefWidth="78.0" text="Tarih" />

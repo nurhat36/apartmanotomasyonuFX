@@ -49,7 +49,7 @@ public class SecondaryController {
     @FXML
     private Label aidat3;
     @FXML
-    private Spinner<Intager> aidatmiktari;
+    private Spinner<Integer> aidatmiktari;
     @FXML
     private ComboBox daire_nocmb;
     @FXML
@@ -66,7 +66,7 @@ public class SecondaryController {
 
     @FXML
     public void initialize(){
-         
+           
          binaNoColumn.setCellValueFactory(new PropertyValueFactory<>("binaNo"));
         daireNoColumn.setCellValueFactory(new PropertyValueFactory<>("daireNo"));
         tarihColumn.setCellValueFactory(new PropertyValueFactory<>("tarih"));
@@ -75,6 +75,7 @@ public class SecondaryController {
         cmbdolur();
         aidatyaz();
         gelirlerdoldur();
+        aidatmiktari.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100000, aidat));
     }
     private void cmbdolur() {
 
