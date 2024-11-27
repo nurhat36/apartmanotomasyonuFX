@@ -51,13 +51,13 @@ public class SQLHelper {
             return -1;
         }
     }
-     public int executeUpdateresim(String sql, String binaNo, String tarih, String giderTur, Object miktar, FileInputStream fis, int fileLength) {
+     public int executeUpdateresim(String sql, String binaNo, Object tarih, String giderTur, Object miktar, FileInputStream fis, int fileLength) {
         int result = 0;
 
         try  {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, binaNo);
-            pstmt.setString(2, tarih);
+            pstmt.setObject(2, tarih);
             pstmt.setString(3, giderTur);
             pstmt.setObject(4, miktar);
 

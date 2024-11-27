@@ -7,3 +7,4 @@ com\mycompany\apartmanotomasyonufxml\kullaniciekraniController.class
 com\mycompany\apartmanotomasyonufxml\SQLHelper.class
 com\mycompany\apartmanotomasyonufxml\yonSifUnutController.class
 com\mycompany\apartmanotomasyonufxml\AidatGeliri.class
+com\mycompany\apartmanotomasyonufxml\GiderVerisi.class

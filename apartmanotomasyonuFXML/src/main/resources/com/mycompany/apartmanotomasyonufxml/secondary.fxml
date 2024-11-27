@@ -52,10 +52,14 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="-7.0" layoutY="220.0" prefHeight="428.0" prefWidth="878.0">
+                        <TableView fx:id="Gider_table" layoutX="-7.0" layoutY="220.0" prefHeight="428.0" prefWidth="878.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
+                            <TableColumn fx:id="gididColumn" prefWidth="86.4000244140625" text="ID" />
+                            <TableColumn fx:id="gidbinaNoColumn" prefWidth="90.39999389648438" text="BİNA NO" />
+                              <TableColumn fx:id="gidtarihColumn" prefWidth="110.39999389648438" text="TARİH" />
+                              <TableColumn fx:id="turColumn" prefWidth="220.79998779296875" text="GİDER TÜRÜ" />
+                              <TableColumn fx:id="gidmiktarColumn" prefWidth="142.4000244140625" text="MİKTAR (TL)" />
+                              <TableColumn fx:id="giddekontColumn" prefWidth="223.20001220703125" text="DEKONT" />
                           </columns>
                         </TableView>
                         <CheckBox fx:id="jCheckBox1" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#checkbox1" text="Elektrik" />
@@ -66,19 +70,19 @@
                         <CheckBox fx:id="jCheckBox6" layoutX="14.0" layoutY="144.0" mnemonicParsing="false" onAction="#checkbox6" text="Diğer Giderler" />
                         <TextField fx:id="diger_gider_tf" disable="true" layoutX="32.0" layoutY="188.0" prefHeight="26.0" prefWidth="195.0" promptText="Giderle ilgili Bilgi veriniz" />
                         <Label layoutX="32.0" layoutY="169.0" prefHeight="18.0" prefWidth="194.0" text="Kısa gider bilgisi" />
-                        <DatePicker layoutX="255.0" layoutY="17.0" prefHeight="26.0" prefWidth="151.0" />
+                        <DatePicker fx:id="gidertarih" layoutX="255.0" layoutY="17.0" prefHeight="26.0" prefWidth="151.0" />
                         <Label layoutX="255.0" prefHeight="18.0" prefWidth="194.0" text="Tarih" />
                         <Label layoutX="255.0" layoutY="44.0" prefHeight="18.0" prefWidth="194.0" text="Miktar" />
-                        <Spinner editable="true" layoutX="255.0" layoutY="58.0" />
-                        <Button layoutX="255.0" layoutY="91.0" mnemonicParsing="false" text="Dekont Resmi Yükle" />
-                        <Label layoutX="255.0" layoutY="119.0" prefHeight="18.0" prefWidth="349.0" />
+                        <Spinner fx:id="gidermiktari" editable="true" layoutX="255.0" layoutY="58.0" />
+                        <Button layoutX="255.0" layoutY="91.0" mnemonicParsing="false" onAction="#dekontyukleme" text="Dekont Resmi Yükle" />
+                        <Label fx:id="dekontyolu" layoutX="255.0" layoutY="119.0" prefHeight="18.0" prefWidth="349.0" />
                         <Button layoutX="255.0" layoutY="140.0" mnemonicParsing="false" text="Görüntüle" />
-                        <Button layoutX="331.0" layoutY="140.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="70.0" text="ONAYLA" />
+                        <Button layoutX="331.0" layoutY="140.0" mnemonicParsing="false" onAction="#giderOnayla" prefHeight="52.0" prefWidth="70.0" text="ONAYLA" />
                         <Label layoutX="545.0" layoutY="12.0" prefHeight="18.0" prefWidth="194.0" text="Tablodaki dekont resmini görüntüle" />
                         <Label layoutX="545.0" layoutY="44.0" prefHeight="18.0" prefWidth="194.0" text="Dekont ID" />
-                        <Spinner editable="true" layoutX="545.0" layoutY="58.0" />
+                        <Spinner fx:id="dekontID" editable="true" layoutX="545.0" layoutY="58.0" />
                         <Button layoutX="545.0" layoutY="91.0" mnemonicParsing="false" text="Dekont Resmi Görüntüle" />
-                        <Label layoutX="232.0" layoutY="192.0" prefHeight="18.0" prefWidth="289.0" />
+                        <Label fx:id="gider_bilgi_goster" layoutX="232.0" layoutY="192.0" prefHeight="18.0" prefWidth="289.0" />
                         <Label fx:id="butce2" layoutX="634.0" layoutY="152.0" prefHeight="18.0" prefWidth="194.0" text="Bütçe:" />
                         <Label fx:id="aidat2" layoutX="634.0" layoutY="178.0" prefHeight="18.0" prefWidth="194.0" text="Aidat" />
                      </children>
@@ -90,7 +94,7 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Label layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="226.0" text="Aidatı Belirle" />
-                        <Spinner editable="true" layoutX="14.0" layoutY="32.0" />
+                        <Spinner fx:id="aidatbelirle" editable="true" layoutX="14.0" layoutY="32.0" />
                         <Button layoutX="14.0" layoutY="70.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="ONAYLA" />
                         <Label fx:id="aidat3" layoutX="190.0" layoutY="35.0" prefHeight="18.0" prefWidth="226.0" text="Şimdiki Aidat:" />
                         <Label layoutX="14.0" layoutY="111.0" prefHeight="18.0" prefWidth="226.0" />
