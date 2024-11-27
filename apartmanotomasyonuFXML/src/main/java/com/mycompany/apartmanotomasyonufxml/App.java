@@ -23,12 +23,15 @@ public class App extends Application {
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
+    static void setRoot(String fxml,Stage stage) throws IOException {
         scene.setRoot(loadFXML(fxml));
+        stage.setScene(scene);
+        stage.sizeToScene();
+        stage.show();
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/com/mycompany/apartmanotomasyonufxml/"+fxml + ".fxml"));
         return fxmlLoader.load();
     }
 

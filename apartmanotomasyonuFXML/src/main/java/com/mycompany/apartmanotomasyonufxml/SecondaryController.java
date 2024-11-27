@@ -1,8 +1,10 @@
 package com.mycompany.apartmanotomasyonufxml;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -65,6 +67,8 @@ public class SecondaryController {
     @FXML
     private Label dekontyolu;
     @FXML
+    private Label aidatbelirlemebilgi;
+    @FXML
     private Spinner<Integer> aidatmiktari;
     @FXML
     private Spinner<Integer> gidermiktari;
@@ -72,13 +76,13 @@ public class SecondaryController {
     private Spinner<Integer> dekontID;
     @FXML
     private Spinner<Integer> aidatbelirle;
-    
+
     @FXML
     private ComboBox daire_nocmb;
     private int aidat;
     @FXML
     private TableView<AidatGeliri> Gelir_table;
-    
+
     @FXML
     private TableColumn<AidatGeliri, Integer> binaNoColumn;
     @FXML
@@ -111,7 +115,7 @@ public class SecondaryController {
         daireNoColumn.setCellValueFactory(new PropertyValueFactory<>("daireNo"));
         tarihColumn.setCellValueFactory(new PropertyValueFactory<>("tarih"));
         miktarColumn.setCellValueFactory(new PropertyValueFactory<>("miktar"));
-        
+
         gididColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         gidbinaNoColumn.setCellValueFactory(new PropertyValueFactory<>("binaNo"));
         gidtarihColumn.setCellValueFactory(new PropertyValueFactory<>("tarih"));
@@ -128,7 +132,98 @@ public class SecondaryController {
         dekontID.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100000, 0));
         aidatbelirle.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100000, aidat));
     }
-    private void GidertablosunuDoldur(){
+    @FXML
+    private void Aidatonayla() {                                                
+        SQLHelper sql = new SQLHelper();
+        String insertSQL = "UPDATE yötici_kayitlari_table SET aidat = ? WHERE Bina_No = ?";
+
+        // Veritabanına ekleme işlemi
+        int result = sql.executeUpdate(insertSQL, aidatbelirle.getValue(), PrimaryController.bina_no);
+        if (result > 0) {
+            aidatbelirlemebilgi.setText("aidat başarıyla güncellendi.");
+            aidat=aidatbelirle.getValue();
+            aidatmiktari.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100000, aidat));
+            System.out.println("Veri başarıyla eklendi.");
+        } else {
+            System.err.println("Veri ekleme başarısız.");
+        }
+        sql.close();
+
+        if (result > 0) {
+            System.out.println("Kayıt başarıyla eklendi!");
+
+        }
+        aidatyaz();
+
+    }        
+    @FXML
+    private void idlidekont() {
+        SQLHelper dphelper = new SQLHelper();
+
+        String selectSQL = "SELECT dekont FROM Bina_Giderleri_table WHERE id = ? AND Bina_no = ?";
+        try (ResultSet rs = dphelper.executeQuery(selectSQL, dekontID.getValue(), PrimaryController.bina_no)) {
+            if (rs.next()) {
+                // Veriyi alıyoruz
+                byte[] imageBytes = rs.getBytes("dekont");
+
+                if (imageBytes != null && imageBytes.length > 0) {
+                    try (InputStream in = new ByteArrayInputStream(imageBytes)) {
+                        // Resim dosyasını JavaFX Image nesnesi ile yüklüyoruz
+                        Image image = new Image(in);
+
+                        // Resmi göstermek için bir ImageView oluşturuyoruz
+                        ImageView imageView = new ImageView(image);
+
+                        // Ekran boyutlarını alıyoruz
+                        double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
+                        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
+
+                        // Resmin boyutunu ekran boyutuna göre sınırlıyoruz
+                        imageView.setPreserveRatio(true);  // Orantılı boyutlandırma
+                        imageView.setFitWidth(screenWidth * 0.9); // Ekranın %90'ına kadar sığdırıyoruz
+                        imageView.setFitHeight(screenHeight * 0.9); // Ekranın %90'ına kadar sığdırıyoruz
+
+                        // Yeni bir StackPane oluşturup resmi içine ekliyoruz
+                        StackPane root = new StackPane(imageView);
+
+                        // Yeni bir Stage oluşturuyoruz (Açılan pencere)
+                        Stage imageStage = new Stage();
+                        imageStage.setTitle("Resim Görüntüleyici");
+                        imageStage.setScene(new Scene(root));
+
+                        // Stage'i ekrana ortalıyoruz
+                        imageStage.show();
+
+                    } catch (Exception e) {
+                        // Hata durumunda bir uyarı gösteriyoruz
+                        showAlert(Alert.AlertType.ERROR, "Hata", "Resim Yüklenemedi",
+                                "Resim dosyası yüklenemedi. Lütfen geçerli bir dosya seçin.\n" + e.getMessage());
+                    }
+                } else {
+                    showAlert(Alert.AlertType.WARNING, "Uyarı", "Dekont Bulunamadı",
+                            "Seçilen ID için dekont bulunamadı.");
+                }
+            } else {
+                gider_bilgi_goster.setText("Yanlış ID");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Veritabanı Hatası", "Sorgu İşlemi Başarısız",
+                    "Veritabanına erişim sırasında bir hata oluştu.\n" + e.getMessage());
+        }
+    }
+
+// Uyarı göstermek için yardımcı bir metot
+    private void showAlert(Alert.AlertType alertType, String title, String header, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    private void GidertablosunuDoldur() {
         SQLHelper dbhelper = new SQLHelper();
         String sql = "SELECT id,Bina_no, tarih, Gidar_Türü, miktar, dekont FROM Bina_Giderleri_table where Bina_no=?";
         ObservableList<GiderVerisi> gelirListesi = FXCollections.observableArrayList();
@@ -144,7 +239,7 @@ public class SecondaryController {
                 Object dekont = rs.getObject("dekont");
 
                 // Listeye yeni satır ekle
-                gelirListesi.add(new GiderVerisi(id,binaNo, tarih, tur, miktar,dekont));
+                gelirListesi.add(new GiderVerisi(id, binaNo, tarih, tur, miktar, dekont));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -153,7 +248,8 @@ public class SecondaryController {
         // Tabloya verileri ekle
         Gider_table.setItems(gelirListesi);
     }
-    private void giderisqlegonder(String Gider){
+
+    private void giderisqlegonder(String Gider) {
         SQLHelper dbhelper = new SQLHelper();
         String insertSQL = "INSERT INTO Bina_Giderleri_table (Bina_no, tarih, Gidar_Türü, miktar, dekont) VALUES (?, ?, ?, ?, ?)";
 
@@ -176,10 +272,11 @@ public class SecondaryController {
             dbhelper.close();
         }
         GidertablosunuDoldur();
-        
+
     }
+
     @FXML
-    private void giderOnayla() {                                         
+    private void giderOnayla() {
         if (jCheckBox1.isSelected()) {
             giderisqlegonder("Elektrik");
         } else if (jCheckBox2.isSelected()) {
@@ -204,11 +301,10 @@ public class SecondaryController {
         }
         butceyaz();
 
-
-    }         
+    }
     private String resimyolu;
 
-     public void dekontuac() {
+    public void dekontuac() {
         try {
             // Resim dosyasını JavaFX Image nesnesiyle okuma
             File imageFile = new File(resimyolu);

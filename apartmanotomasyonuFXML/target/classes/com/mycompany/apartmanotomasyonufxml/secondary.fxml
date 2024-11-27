@@ -52,7 +52,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="Gider_table" layoutX="-7.0" layoutY="220.0" prefHeight="428.0" prefWidth="878.0">
+                        <TableView fx:id="Gider_table" layoutX="-2.0" layoutY="217.0" prefHeight="431.0" prefWidth="873.0">
                           <columns>
                             <TableColumn fx:id="gididColumn" prefWidth="86.4000244140625" text="ID" />
                             <TableColumn fx:id="gidbinaNoColumn" prefWidth="90.39999389648438" text="BİNA NO" />
@@ -81,7 +81,7 @@
                         <Label layoutX="545.0" layoutY="12.0" prefHeight="18.0" prefWidth="194.0" text="Tablodaki dekont resmini görüntüle" />
                         <Label layoutX="545.0" layoutY="44.0" prefHeight="18.0" prefWidth="194.0" text="Dekont ID" />
                         <Spinner fx:id="dekontID" editable="true" layoutX="545.0" layoutY="58.0" />
-                        <Button layoutX="545.0" layoutY="91.0" mnemonicParsing="false" text="Dekont Resmi Görüntüle" />
+                        <Button layoutX="545.0" layoutY="91.0" mnemonicParsing="false" onAction="#idlidekont" text="Dekont Resmi Görüntüle" />
                         <Label fx:id="gider_bilgi_goster" layoutX="232.0" layoutY="192.0" prefHeight="18.0" prefWidth="289.0" />
                         <Label fx:id="butce2" layoutX="634.0" layoutY="152.0" prefHeight="18.0" prefWidth="194.0" text="Bütçe:" />
                         <Label fx:id="aidat2" layoutX="634.0" layoutY="178.0" prefHeight="18.0" prefWidth="194.0" text="Aidat" />
@@ -95,9 +95,9 @@
                      <children>
                         <Label layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="226.0" text="Aidatı Belirle" />
                         <Spinner fx:id="aidatbelirle" editable="true" layoutX="14.0" layoutY="32.0" />
-                        <Button layoutX="14.0" layoutY="70.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="ONAYLA" />
+                        <Button layoutX="14.0" layoutY="70.0" mnemonicParsing="false" onAction="#Aidatonayla" prefHeight="26.0" prefWidth="154.0" text="ONAYLA" />
                         <Label fx:id="aidat3" layoutX="190.0" layoutY="35.0" prefHeight="18.0" prefWidth="226.0" text="Şimdiki Aidat:" />
-                        <Label layoutX="14.0" layoutY="111.0" prefHeight="18.0" prefWidth="226.0" />
+                        <Label fx:id="aidatbelirlemebilgi" layoutX="14.0" layoutY="111.0" prefHeight="18.0" prefWidth="226.0" />
                      </children>
                   </AnchorPane>
             </content>

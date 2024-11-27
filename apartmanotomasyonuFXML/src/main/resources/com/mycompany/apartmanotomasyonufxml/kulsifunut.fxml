@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="502.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.mycompany.apartmanotomasyonufxml.KulSifUnutController">
+   <children>
+      <Label layoutX="176.0" layoutY="14.0" text="😂Şİfrenizi mi Unuttunuz?  😂" />
+      <Label layoutX="60.0" layoutY="32.0" prefHeight="18.0" prefWidth="386.0" text="Lütfen kaydolurken kullandığınız telefon numaranızı ve bina noyu giriniiz" />
+      <Label layoutX="176.0" layoutY="58.0" text="Bina No" />
+      <TextField layoutX="177.0" layoutY="76.0" />
+   </children>
 </AnchorPane>

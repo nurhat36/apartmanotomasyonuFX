@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class PrimaryController {
     
@@ -39,6 +40,7 @@ public class PrimaryController {
     
     public static String bina_no;
     public static String daire_no;
+   
     @FXML
     private void yön_kaydol() {                                             
         SQLHelper dbhelper = new SQLHelper();
@@ -151,7 +153,7 @@ public class PrimaryController {
                     
                     bina_no=girilenKullaniciAdi;
                     daire_no=daireNoStr;
-                    App.setRoot("kullaniciekrani");
+                    App.setRoot("kullaniciekrani",new Stage());
                     // Burada gerekli işlemleri yapabilirsiniz
                 } else {
                     kul_gr_hata_lbli.setText("Bina no ve/veya şifre yanlış");
@@ -162,8 +164,8 @@ public class PrimaryController {
         } catch (SQLException e) {
             System.err.println("Veri çekme hatası: " + e.getMessage());
         } catch (IOException ex) {
-            System.err.println("sayfa çekme hatası: " + ex.getMessage());
-        }
+            Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
     @FXML
     private void cmbdolurkayıt() {
@@ -241,7 +243,7 @@ public class PrimaryController {
                 if (veritabanindakiSifre.equals(girilenSifre)) {
                     bina_no = yoneticibinano_jtf1.getText();
                     System.out.println("Bina_No adı ve şifre doğru, işlem başarılı!");
-                    App.setRoot("secondary");
+                    App.setRoot("secondary",new Stage());
                     // Burada gerekli işlemleri yapabilirsiniz
                 } else {
                     yön_gr_hata_lbli.setText("Bina no ve/veya şifre yanlış");
@@ -254,12 +256,20 @@ public class PrimaryController {
         }
     }
      @FXML
-    private void switchToyonsifunut() throws IOException {
-        App.setRoot("yonsifunut");
+    private void switchToyonsifunut() {
+        try {
+            App.setRoot("yonsifunut",new Stage());
+        } catch (IOException ex) {
+            Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     @FXML
-    private void switchTokulsifunut() throws IOException {
-        App.setRoot("kulsifunut");
+    private void switchTokulsifunut(){
+        try {
+            App.setRoot("kulsifunut",new Stage());
+        } catch (IOException ex) {
+            Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
