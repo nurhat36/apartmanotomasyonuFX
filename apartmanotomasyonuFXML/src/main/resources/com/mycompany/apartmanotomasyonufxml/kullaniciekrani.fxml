@@ -27,7 +27,7 @@
                               <TableColumn fx:id="miktarColumn" prefWidth="242.39996337890625" text="MİKTAR (TL)" />
                           </columns>
                         </TableView>
-                        <Label layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="255.0" text="Bu Ayki Aidatınızı Ödediniz">
+                        <Label fx:id="ust_label" layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="255.0" text="Bu Ayki Aidatınızı Ödediniz">
                            <font>
                               <Font size="14.0" />
                            </font>

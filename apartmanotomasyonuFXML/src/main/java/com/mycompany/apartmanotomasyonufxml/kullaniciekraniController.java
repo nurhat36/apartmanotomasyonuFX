@@ -12,10 +12,14 @@ import java.io.InputStream;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Vector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -29,9 +33,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import static javafx.scene.effect.BlendMode.GREEN;
+import static javafx.scene.effect.BlendMode.RED;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -47,6 +57,8 @@ public class kullaniciekraniController {
     private Label butce1;
     @FXML
     private Label aidat3;
+    @FXML
+    private Label ust_label;
     @FXML
     private Spinner<Integer> dekontID;
     @FXML
@@ -75,6 +87,7 @@ public class kullaniciekraniController {
     @FXML
     private TableColumn<GiderVerisi, Object> giddekontColumn;
     @FXML
+    private String tarih;
     public void initialize() {
 
         binaNoColumn.setCellValueFactory(new PropertyValueFactory<>("binaNo"));
@@ -93,9 +106,45 @@ public class kullaniciekraniController {
         aidatyaz();
         gelirlerdoldur();
         GidertablosunuDoldur();
+        kull_ekr_ust_lbl1();
         
         dekontID.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100000, 0));
         
+    }
+    
+    private void kull_ekr_ust_lbl1() {
+        // Son ödeme tarihini kontrol et
+        LocalDate ayinIlkGunu = LocalDate.now().withDayOfMonth(1);
+
+        System.out.println("Bu ayın ilk günü: " + ayinIlkGunu);
+        String tarihstr = this.tarih;
+
+        try {
+            // String tarih bilgisini LocalDate'e çevirin
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate tarih1 = LocalDate.parse(tarihstr, formatter);
+            System.out.println(tarih1+"  "+ayinIlkGunu);
+
+            // Tarihi kontrol edin
+            if (tarih1.isBefore(ayinIlkGunu)) {
+                // Ödeme yapılmamış veya geç yapılmışsa kırmızı
+                ust_label.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+
+                ust_label.setText("Ödeme yapılmadı veya geç yapıldı");
+            } else {
+                // Ödeme zamanında yapılmışsa yeşil
+                ust_label.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+                ust_label.setText("Ödeme yapıldı");
+            }
+        } catch (DateTimeParseException e) {
+            // Geçersiz tarih formatı durumunda hata mesajı
+            ust_label.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+            ust_label.setText("Geçersiz tarih formatı");
+            System.err.println("Tarih formatı hatalı: " + e.getMessage());
+        } catch (NullPointerException e) {
+            ust_label.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+            ust_label.setText("Bu zamana kadar hiçbir aidat ödemediniz!");
+        }
     }
     private int aidat;
     @FXML
@@ -239,14 +288,16 @@ public class kullaniciekraniController {
     }
     public void gelirlerdoldur() {
         SQLHelper dbhelper = new SQLHelper();
-        String sql = "SELECT bina_no, Daire_no, Tarih, miktar FROM aidat_gelirleri_table WHERE Bina_no=?";
+        String sql = "SELECT bina_no, Daire_no, Tarih, miktar FROM aidat_gelirleri_table WHERE Bina_no=? and Daire_no=?";
         ObservableList<AidatGeliri> gelirListesi = FXCollections.observableArrayList();
 
-        try (ResultSet rs = dbhelper.executeQuery(sql, PrimaryController.bina_no)) {
+        try (ResultSet rs = dbhelper.executeQuery(sql, PrimaryController.bina_no,PrimaryController.daire_no)) {
             while (rs.next()) {
                 int binaNo = rs.getInt("bina_no");
                 String daireNo = rs.getString("Daire_no");
                 String tarih = rs.getString("Tarih");
+                System.out.println(tarih);
+                this.tarih=tarih;
                 double miktar = rs.getDouble("miktar");
 
                 // Listeye yeni satır ekle
