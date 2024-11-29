@@ -12,6 +12,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -85,6 +87,44 @@
                         <Label fx:id="gider_bilgi_goster" layoutX="232.0" layoutY="192.0" prefHeight="18.0" prefWidth="289.0" />
                         <Label fx:id="butce2" layoutX="634.0" layoutY="152.0" prefHeight="18.0" prefWidth="194.0" text="Bütçe:" />
                         <Label fx:id="aidat2" layoutX="634.0" layoutY="178.0" prefHeight="18.0" prefWidth="194.0" text="Aidat" />
+                        <VBox layoutX="122.0" layoutY="22.0" prefHeight="140.0" prefWidth="43.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="130.0">
+                                 <children>
+                                    <ImageView fitHeight="22.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/elektrik.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="19.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/su.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/doğalgaz.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="33.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/bahçıvan.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="28.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/asansör.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="26.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/diğer_gider.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
                      </children>
                   </AnchorPane>
             </content>
@@ -98,6 +138,15 @@
                         <Button layoutX="14.0" layoutY="70.0" mnemonicParsing="false" onAction="#Aidatonayla" prefHeight="26.0" prefWidth="154.0" text="ONAYLA" />
                         <Label fx:id="aidat3" layoutX="190.0" layoutY="35.0" prefHeight="18.0" prefWidth="226.0" text="Şimdiki Aidat:" />
                         <Label fx:id="aidatbelirlemebilgi" layoutX="14.0" layoutY="111.0" prefHeight="18.0" prefWidth="226.0" />
+                        <VBox layoutX="326.0" layoutY="83.0" prefHeight="422.0" prefWidth="434.0">
+                           <children>
+                              <ImageView fitHeight="629.0" fitWidth="433.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@/apartman1.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
                      </children>
                   </AnchorPane>
             </content>
