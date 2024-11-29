@@ -36,7 +36,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        SQLHelper sql=new SQLHelper();
+        SQLHelper sql = new SQLHelper();
         launch();
     }
 
