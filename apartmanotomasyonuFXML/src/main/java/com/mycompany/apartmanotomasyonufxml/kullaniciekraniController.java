@@ -187,8 +187,17 @@ public class kullaniciekraniController {
 
             if (rs.next()) {
                 toplam2 = rs.getInt("toplam");
+                if(toplam - toplam2<0){
+                    butce1.setText("Bütçe: " + (toplam - toplam2));
+                    butce1.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+                    
+                }else{
+                    butce1.setText("Bütçe: " + (toplam - toplam2));
+                    butce1.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+                }
 
-                butce1.setText("Bütçe: " + (toplam - toplam2));
+                
+                
                 
             }
         } catch (SQLException e) {
