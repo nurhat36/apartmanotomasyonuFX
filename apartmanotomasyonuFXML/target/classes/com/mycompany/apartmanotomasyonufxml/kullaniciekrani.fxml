@@ -44,19 +44,19 @@
                            <children>
                               <ImageView fitHeight="101.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/mahalle2.png" />
+                                    <Image url="@/mahalle2.png" />
                                  </image>
                               </ImageView>
                            </children>
                         </VBox>
                         <ImageView fitHeight="101.0" fitWidth="200.0" layoutX="445.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../Downloads/mahalle2.png" />
+                              <Image url="@/mahalle2.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="101.0" fitWidth="200.0" layoutX="630.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../Downloads/mahalle2.png" />
+                              <Image url="@/mahalle2.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -91,7 +91,7 @@
                            <children>
                               <ImageView fitHeight="31.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/bütçe.png" />
+                                    <Image url="@/bütçe.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -100,7 +100,7 @@
                            <children>
                               <ImageView fitHeight="199.0" fitWidth="206.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/grafik.png" />
+                                    <Image url="@/grafik.png" />
                                  </image>
                               </ImageView>
                            </children>
