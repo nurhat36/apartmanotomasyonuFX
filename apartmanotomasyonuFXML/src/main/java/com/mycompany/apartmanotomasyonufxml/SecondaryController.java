@@ -11,6 +11,7 @@ import java.util.Vector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -26,7 +27,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -498,9 +503,22 @@ public class SecondaryController {
 
             if (rs.next()) {
                 toplam2 = rs.getInt("toplam");
-
+                if (toplam - toplam2<0){
                 butce1.setText("Bütçe: " + (toplam - toplam2));
                 butce2.setText("Bütçe: " + (toplam - toplam2));
+                
+                butce1.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+                butce2.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+                }
+                else
+                {
+                butce1.setText("Bütçe: " + (toplam - toplam2));
+                butce2.setText("Bütçe: " + (toplam - toplam2));
+                
+                butce1.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+                butce2.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));  
+                }
+                
             }
         } catch (SQLException e) {
             System.err.println("Veri çekme hatası: " + e.getMessage());

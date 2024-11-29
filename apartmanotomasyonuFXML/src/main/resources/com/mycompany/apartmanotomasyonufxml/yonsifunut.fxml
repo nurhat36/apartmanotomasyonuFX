@@ -4,7 +4,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="502.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.apartmanotomasyonufxml.yonSifUnutController">
    <children>
@@ -22,5 +25,14 @@
       <Label layoutX="173.0" layoutY="235.0" text="Yeni Şifre Tekrarı" />
       <Button layoutX="200.0" layoutY="288.0" mnemonicParsing="false" onAction="#Sif_unut_onayla" text="Şifreyi Değiştir" />
       <Label fx:id="Sif_Unt_kon_jlbl" layoutX="104.0" layoutY="323.0" prefHeight="18.0" prefWidth="297.0" />
+      <VBox layoutX="31.0" layoutY="96.0" prefHeight="158.0" prefWidth="122.0">
+         <children>
+            <ImageView fitHeight="224.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/yön_şif_unt_png.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
