@@ -133,7 +133,7 @@ public class kullaniciekraniController {
                 ust_label.setText("Ödeme yapılmadı veya geç yapıldı");
             } else {
                 // Ödeme zamanında yapılmışsa yeşil
-                ust_label.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+                ust_label.setBackground(new Background(new BackgroundFill(Color.LIGHTGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
                 ust_label.setText("Ödeme yapıldı");
             }
         } catch (DateTimeParseException e) {
@@ -193,7 +193,7 @@ public class kullaniciekraniController {
                     
                 }else{
                     butce1.setText("Bütçe: " + (toplam - toplam2));
-                    butce1.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+                    butce1.setBackground(new Background(new BackgroundFill(Color.LIGHTGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
                 }
 
                 

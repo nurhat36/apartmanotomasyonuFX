@@ -515,8 +515,8 @@ public class SecondaryController {
                 butce1.setText("Bütçe: " + (toplam - toplam2));
                 butce2.setText("Bütçe: " + (toplam - toplam2));
                 
-                butce1.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
-                butce2.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));  
+                butce1.setBackground(new Background(new BackgroundFill(Color.LIGHTGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+                butce2.setBackground(new Background(new BackgroundFill(Color.LIGHTGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
                 }
                 
             }
