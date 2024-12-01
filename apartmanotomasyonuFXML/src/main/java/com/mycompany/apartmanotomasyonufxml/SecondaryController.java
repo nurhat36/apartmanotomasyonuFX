@@ -137,6 +137,10 @@ public class SecondaryController {
         aidatbelirle.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100000, aidat));
     }
     @FXML
+    private void grafikgit() throws IOException {
+        App.setRoot("grafikler",new Stage());
+    }
+    @FXML
     private void Aidatonayla() {                                                
         SQLHelper sql = new SQLHelper();
         String insertSQL = "UPDATE yötici_kayitlari_table SET aidat = ? WHERE Bina_No = ?";
@@ -226,11 +230,12 @@ public class SecondaryController {
         alert.setContentText(content);
         alert.showAndWait();
     }
+    public static ObservableList<GiderVerisi> gelirListesi = FXCollections.observableArrayList();
 
     private void GidertablosunuDoldur() {
         SQLHelper dbhelper = new SQLHelper();
         String sql = "SELECT id,Bina_no, tarih, Gidar_Türü, miktar, dekont FROM Bina_Giderleri_table where Bina_no=?";
-        ObservableList<GiderVerisi> gelirListesi = FXCollections.observableArrayList();
+        gelirListesi.clear();
 
         try (ResultSet rs = dbhelper.executeQuery(sql, PrimaryController.bina_no)) {
             while (rs.next()) {
@@ -241,6 +246,8 @@ public class SecondaryController {
                 System.out.println(tur);
                 Object miktar = rs.getObject("miktar");
                 Object dekont = rs.getObject("dekont");
+
+
 
                 // Listeye yeni satır ekle
                 gelirListesi.add(new GiderVerisi(id, binaNo, tarih, tur, miktar, dekont));
