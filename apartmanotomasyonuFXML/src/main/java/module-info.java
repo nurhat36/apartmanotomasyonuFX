@@ -7,4 +7,5 @@ module com.mycompany.apartmanotomasyonufxml {
     opens com.mycompany.apartmanotomasyonufxml to javafx.fxml;
     exports com.mycompany.apartmanotomasyonufxml;
     requires mssql.jdbc;
+    requires java.desktop;
 }

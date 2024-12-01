@@ -8,11 +8,10 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+
+import javax.swing.*;
 
 public class PrimaryController {
     
@@ -37,10 +36,32 @@ public class PrimaryController {
     public PasswordField yonetici_kaydol_pass_tek;
     public ComboBox dairenokayıt_cmb;
     public ComboBox dairenogiris_cmb;
-    
+    @FXML
+    private ToggleButton toggleButton;
+    @FXML
+    private TextField textField;
     public static String bina_no;
     public static String daire_no;
-   
+    @FXML
+    public void initialize() {
+        textField.setVisible(false);
+    }
+   @FXML
+   private void toggle(){
+       if (toggleButton.isSelected()) {
+           toggleButton.setText("Hide");
+           textField.setText(kullanicigirispass.getText()); // Şifreyi TextField'e aktar
+           textField.setVisible(true);
+           kullanicigirispass.setVisible(false);
+       } else {
+           toggleButton.setText("Show");
+           kullanicigirispass.setText(textField.getText()); // Şifreyi PasswordField'e aktar
+           kullanicigirispass.setVisible(true);
+           textField.setVisible(false);
+       }
+
+
+   }
     @FXML
     private void yön_kaydol() {                                             
         SQLHelper dbhelper = new SQLHelper();
@@ -85,7 +106,8 @@ public class PrimaryController {
         }
 
 
-    }         
+    }
+
     @FXML
     private void kullanicikaydol(){
         SQLHelper sql = new SQLHelper();

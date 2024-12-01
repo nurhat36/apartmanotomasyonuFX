@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -39,6 +40,8 @@
                                           <Button layoutX="191.0" layoutY="198.0" mnemonicParsing="false" onAction="#kullanicigiris" text="Giriş Yap" />
                                           <Button layoutX="170.0" layoutY="238.0" mnemonicParsing="false" onAction="#switchTokulsifunut" text="Şifremi Unuttum" />
                                           <Label fx:id="kul_gr_hata_lbli" layoutX="92.0" layoutY="274.0" prefHeight="18.0" prefWidth="260.0" />
+                                          <ToggleButton fx:id="toggleButton" layoutX="308.0" layoutY="135.0" mnemonicParsing="false" onAction="#toggle" text="Show" />
+                                          <TextField fx:id="textField" layoutX="143.0" layoutY="135.0" />
                                        </children>
                                     </AnchorPane>
                               </content>
