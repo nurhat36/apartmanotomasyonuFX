@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -34,5 +35,8 @@
             </ImageView>
          </children>
       </VBox>
+      <ToggleButton fx:id="yon_kay_toggleButton" layoutX="322.0" layoutY="253.0" mnemonicParsing="false" onAction="#toggle_yonetici_kayit" text="Show" />
+      <TextField fx:id="yon_kay_text" layoutX="172.0" layoutY="210.0" prefHeight="26.0" prefWidth="154.0" visible="false" />
+      <TextField fx:id="yon_kay_text_tek" layoutX="173.0" layoutY="253.0" prefHeight="26.0" prefWidth="150.0" visible="false" />
    </children>
 </AnchorPane>

@@ -39,15 +39,96 @@ public class PrimaryController {
     @FXML
     private ToggleButton toggleButton;
     @FXML
+    private ToggleButton yon_toggleButton;
+    @FXML
     private TextField textField;
+    @FXML
+    private TextField yon_sif_textField;
+    @FXML
+    private ToggleButton yon_kay_toggleButton;
+    @FXML
+    private TextField yon_kay_text;
+    @FXML
+    private TextField yon_kay_text_tek;
+    @FXML
+    private ToggleButton kul_kay_toggleButton;
+    @FXML
+    private TextField kul_kay_text;
+    @FXML
+    private TextField kul_kay_text_tek;
     public static String bina_no;
     public static String daire_no;
     @FXML
     public void initialize() {
         textField.setVisible(false);
+        yon_sif_textField.setVisible(false);
+        yon_kay_text_tek.setVisible(false);
+        yon_kay_text.setVisible(false);
+        kul_kay_text.setVisible(false);
+        kul_kay_text_tek.setVisible(false);
+    }
+    @FXML
+    private void toggle_kul_kayit(){
+        if (kul_kay_toggleButton.isSelected()) {
+            kul_kay_toggleButton.setText("Hide");
+            kul_kay_text.setText(kullanici_kaydol_pass.getText()); // Şifreyi TextField'e aktar
+            kul_kay_text.setVisible(true);
+            kullanici_kaydol_pass.setVisible(false);
+            kul_kay_text_tek.setText(kullanici_kaydol_pass_tek.getText()); // Şifreyi TextField'e aktar
+            kul_kay_text_tek.setVisible(true);
+            kullanici_kaydol_pass_tek.setVisible(false);
+        } else {
+            kul_kay_toggleButton.setText("Show");
+            kullanici_kaydol_pass.setText(kul_kay_text.getText()); // Şifreyi PasswordField'e aktar
+            kullanici_kaydol_pass.setVisible(true);
+            kul_kay_text.setVisible(false);
+            kullanici_kaydol_pass_tek.setText(kul_kay_text_tek.getText()); // Şifreyi PasswordField'e aktar
+            kullanici_kaydol_pass_tek.setVisible(true);
+            kul_kay_text_tek.setVisible(false);
+        }
+
+
+    }
+    @FXML
+    private void toggle_yonetici_kayit(){
+        if (yon_kay_toggleButton.isSelected()) {
+            yon_kay_toggleButton.setText("Hide");
+            yon_kay_text.setText(yonetici_kaydol_pass.getText()); // Şifreyi TextField'e aktar
+            yon_kay_text.setVisible(true);
+            yonetici_kaydol_pass.setVisible(false);
+            yon_kay_text_tek.setText(yonetici_kaydol_pass_tek.getText()); // Şifreyi TextField'e aktar
+            yon_kay_text_tek.setVisible(true);
+            yonetici_kaydol_pass_tek.setVisible(false);
+        } else {
+            yon_kay_toggleButton.setText("Show");
+            yonetici_kaydol_pass.setText(yon_kay_text.getText()); // Şifreyi PasswordField'e aktar
+            yonetici_kaydol_pass.setVisible(true);
+            yon_kay_text.setVisible(false);
+            yonetici_kaydol_pass_tek.setText(yon_kay_text_tek.getText()); // Şifreyi PasswordField'e aktar
+            yonetici_kaydol_pass_tek.setVisible(true);
+            yon_kay_text_tek.setVisible(false);
+        }
+
+
+    }
+    @FXML
+    private void toggle_yonetici_giris(){
+        if (yon_toggleButton.isSelected()) {
+            yon_toggleButton.setText("Hide");
+            yon_sif_textField.setText(yöneticigirispass.getText()); // Şifreyi TextField'e aktar
+            yon_sif_textField.setVisible(true);
+            yöneticigirispass.setVisible(false);
+        } else {
+            yon_toggleButton.setText("Show");
+            yöneticigirispass.setText(yon_sif_textField.getText()); // Şifreyi PasswordField'e aktar
+            yöneticigirispass.setVisible(true);
+            yon_sif_textField.setVisible(false);
+        }
+
+
     }
    @FXML
-   private void toggle(){
+   private void toggle_kullanici_giris(){
        if (toggleButton.isSelected()) {
            toggleButton.setText("Hide");
            textField.setText(kullanicigirispass.getText()); // Şifreyi TextField'e aktar

@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -34,7 +35,7 @@
             <Image url="@/soru_işareti.png" />
          </image>
       </ImageView>
-      <VBox layoutX="360.0" layoutY="265.0" prefHeight="114.0" prefWidth="122.0">
+      <VBox layoutX="356.0" layoutY="73.0" prefHeight="114.0" prefWidth="122.0">
          <children>
             <ImageView fitHeight="122.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -43,5 +44,8 @@
             </ImageView>
          </children>
       </VBox>
+      <ToggleButton fx:id="kul_kay_toggleButton" layoutX="333.0" layoutY="298.0" mnemonicParsing="false" onAction="#toggle_kul_kayit" text="Show" />
+      <TextField fx:id="kul_kay_text" layoutX="180.0" layoutY="253.0" visible="false" />
+      <TextField fx:id="kul_kay_text_tek" layoutX="181.0" layoutY="298.0" visible="false" />
    </children>
 </AnchorPane>

@@ -13,6 +13,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -38,8 +39,35 @@ public class KulSifUnutController {
     private TextField sif_unt_yenisifretekrar_pwf;
     @FXML
     private Label Sif_Unt_kon_jlbl;
-    
-    
+    @FXML
+    private ToggleButton kul_kay_toggleButton;
+    @FXML
+    private TextField kul_kay_text;
+    @FXML
+    private TextField kul_kay_text_tek;
+
+    @FXML
+    private void toggle_kul_kayit(){
+        if (kul_kay_toggleButton.isSelected()) {
+            kul_kay_toggleButton.setText("Hide");
+            kul_kay_text.setText(sif_unt_yeni_sif_pwf.getText()); // Şifreyi TextField'e aktar
+            kul_kay_text.setVisible(true);
+            sif_unt_yeni_sif_pwf.setVisible(false);
+            kul_kay_text_tek.setText(sif_unt_yenisifretekrar_pwf.getText()); // Şifreyi TextField'e aktar
+            kul_kay_text_tek.setVisible(true);
+            sif_unt_yenisifretekrar_pwf.setVisible(false);
+        } else {
+            kul_kay_toggleButton.setText("Show");
+            sif_unt_yeni_sif_pwf.setText(kul_kay_text.getText()); // Şifreyi PasswordField'e aktar
+            sif_unt_yeni_sif_pwf.setVisible(true);
+            kul_kay_text.setVisible(false);
+            sif_unt_yenisifretekrar_pwf.setText(kul_kay_text_tek.getText()); // Şifreyi PasswordField'e aktar
+            sif_unt_yenisifretekrar_pwf.setVisible(true);
+            kul_kay_text_tek.setVisible(false);
+        }
+
+
+    }
     @FXML
     private void Sif_Gün() {                                             
         String binano = Sif_Unt_binano_jtf.getText();

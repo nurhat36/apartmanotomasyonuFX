@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -30,9 +31,37 @@ public class yonSifUnutController {
     @FXML
     private TextField sif_unt_yeni_sif_pwf;
     @FXML
+    private ToggleButton yon_kay_toggleButton;
+    @FXML
+    private TextField yon_kay_text;
+    @FXML
+    private TextField yon_kay_text_tek;
+    @FXML
     private TextField sif_unt_yenisifretekrar_pwf;
     @FXML
     private Label Sif_Unt_kon_jlbl;
+    @FXML
+    private void toggle_yonetici_kayit(){
+        if (yon_kay_toggleButton.isSelected()) {
+            yon_kay_toggleButton.setText("Hide");
+            yon_kay_text.setText(sif_unt_yeni_sif_pwf.getText()); // Şifreyi TextField'e aktar
+            yon_kay_text.setVisible(true);
+            sif_unt_yeni_sif_pwf.setVisible(false);
+            yon_kay_text_tek.setText(sif_unt_yenisifretekrar_pwf.getText()); // Şifreyi TextField'e aktar
+            yon_kay_text_tek.setVisible(true);
+            sif_unt_yenisifretekrar_pwf.setVisible(false);
+        } else {
+            yon_kay_toggleButton.setText("Show");
+            sif_unt_yeni_sif_pwf.setText(yon_kay_text.getText()); // Şifreyi PasswordField'e aktar
+            sif_unt_yeni_sif_pwf.setVisible(true);
+            yon_kay_text.setVisible(false);
+            sif_unt_yenisifretekrar_pwf.setText(yon_kay_text_tek.getText()); // Şifreyi PasswordField'e aktar
+            sif_unt_yenisifretekrar_pwf.setVisible(true);
+            yon_kay_text_tek.setVisible(false);
+        }
+
+
+    }
 
     @FXML
     private void Sif_unut_onayla() {

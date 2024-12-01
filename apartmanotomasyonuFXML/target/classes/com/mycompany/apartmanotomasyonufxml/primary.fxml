@@ -40,7 +40,7 @@
                                           <Button layoutX="191.0" layoutY="198.0" mnemonicParsing="false" onAction="#kullanicigiris" text="Giriş Yap" />
                                           <Button layoutX="170.0" layoutY="238.0" mnemonicParsing="false" onAction="#switchTokulsifunut" text="Şifremi Unuttum" />
                                           <Label fx:id="kul_gr_hata_lbli" layoutX="92.0" layoutY="274.0" prefHeight="18.0" prefWidth="260.0" />
-                                          <ToggleButton fx:id="toggleButton" layoutX="308.0" layoutY="135.0" mnemonicParsing="false" onAction="#toggle" text="Show" />
+                                          <ToggleButton fx:id="toggleButton" layoutX="308.0" layoutY="135.0" mnemonicParsing="false" onAction="#toggle_kullanici_giris" text="Show" />
                                           <TextField fx:id="textField" layoutX="143.0" layoutY="135.0" />
                                        </children>
                                     </AnchorPane>
@@ -73,6 +73,9 @@
                                                 </ImageView>
                                              </children>
                                           </VBox>
+                                          <TextField fx:id="kul_kay_text" layoutX="144.0" layoutY="215.0" />
+                                          <TextField fx:id="kul_kay_text_tek" layoutX="143.0" layoutY="259.0" />
+                                          <ToggleButton fx:id="kul_kay_toggleButton" layoutX="294.0" layoutY="259.0" mnemonicParsing="false" onAction="#toggle_kul_kayit" text="Show" />
                                        </children>
                                     </AnchorPane>
                               </content>
@@ -100,6 +103,8 @@
                                           <Button layoutX="161.0" layoutY="197.0" mnemonicParsing="false" onAction="#switchToyonsifunut" prefHeight="26.0" prefWidth="122.0" text="Şifremi Unuttum" />
                                           <PasswordField fx:id="yöneticigirispass" layoutX="143.0" layoutY="106.0" promptText="Lütfen Şifrenizi Giriniz" />
                                           <Label fx:id="yön_gr_hata_lbli" layoutX="111.0" layoutY="237.0" prefHeight="18.0" prefWidth="221.0" />
+                                          <ToggleButton fx:id="yon_toggleButton" layoutX="300.0" layoutY="106.0" mnemonicParsing="false" onAction="#toggle_yonetici_giris" text="Show" />
+                                          <TextField fx:id="yon_sif_textField" layoutX="144.0" layoutY="106.0" />
                                        </children>
                                     </AnchorPane>
                               </content>
@@ -131,6 +136,9 @@
                                                 </ImageView>
                                              </children>
                                           </VBox>
+                                          <TextField fx:id="yon_kay_text" layoutX="143.0" layoutY="215.0" />
+                                          <TextField fx:id="yon_kay_text_tek" layoutX="145.0" layoutY="260.0" />
+                                          <ToggleButton fx:id="yon_kay_toggleButton" layoutX="295.0" layoutY="260.0" mnemonicParsing="false" onAction="#toggle_yonetici_kayit" text="Show" />
                                        </children>
                                     </AnchorPane>
                               </content>
