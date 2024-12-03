@@ -138,7 +138,7 @@ public class SecondaryController {
     }
     @FXML
     private void grafikgit() throws IOException {
-        App.setRoot("grafikler",new Stage());
+        App.setRoot("grafikler");
     }
     @FXML
     private void Aidatonayla() {                                                

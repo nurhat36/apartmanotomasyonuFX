@@ -256,7 +256,7 @@ public class PrimaryController {
                     
                     bina_no=girilenKullaniciAdi;
                     daire_no=daireNoStr;
-                    App.setRoot("kullaniciekrani",new Stage());
+                    App.setRoot("kullaniciekrani");
                     // Burada gerekli işlemleri yapabilirsiniz
                 } else {
                     kul_gr_hata_lbli.setText("Bina no ve/veya şifre yanlış");
@@ -346,7 +346,7 @@ public class PrimaryController {
                 if (veritabanindakiSifre.equals(girilenSifre)) {
                     bina_no = yoneticibinano_jtf1.getText();
                     System.out.println("Bina_No adı ve şifre doğru, işlem başarılı!");
-                    App.setRoot("secondary",new Stage());
+                    App.setRoot("secondary");
                     // Burada gerekli işlemleri yapabilirsiniz
                 } else {
                     yön_gr_hata_lbli.setText("Bina no ve/veya şifre yanlış");
@@ -361,7 +361,7 @@ public class PrimaryController {
      @FXML
     private void switchToyonsifunut() {
         try {
-            App.setRoot("yonsifunut",new Stage());
+            App.setRoot("yonsifunut");
         } catch (IOException ex) {
             Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -369,7 +369,7 @@ public class PrimaryController {
     @FXML
     private void switchTokulsifunut(){
         try {
-            App.setRoot("kulsifunut",new Stage());
+            App.setRoot("kulsifunut");
         } catch (IOException ex) {
             Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
         }
