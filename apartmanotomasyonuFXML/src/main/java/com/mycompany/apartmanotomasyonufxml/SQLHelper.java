@@ -4,6 +4,7 @@
  */
 package com.mycompany.apartmanotomasyonufxml;
 import java.io.FileInputStream;
+import java.security.MessageDigest;
 import java.sql.*;
 /** 
  *
@@ -84,6 +85,24 @@ public class SQLHelper {
             }
         } catch (SQLException e) {
             System.err.println("Bağlantı kapatma hatası: " + e.getMessage());
+        }
+    }
+    public  String hashPassword(String password) {
+        try {
+            // SHA-256 algoritmasını kullan
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(password.getBytes("UTF-8"));
+            StringBuilder hexString = new StringBuilder();
+
+            // Hash'i hexadecimal formata dönüştür
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

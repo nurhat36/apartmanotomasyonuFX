@@ -169,7 +169,7 @@ public class PrimaryController {
         if (yonetici_kaydol_pass.getText().equals(yonetici_kaydol_pass_tek.getText())) {
 
             // Veritabanına ekleme işlemi
-            int result = dbhelper.executeUpdate(insertSQL, yonetici_kayit_binano_jtf1.getText(), yonetici_daire_sayisi_jtf1.getText(), yonetici_kaydol_pass_tek.getText(),yoneticici_telefon_nokayıt_jtf1.getText(),yonetici_e_posta_jtf1.getText());
+            int result = dbhelper.executeUpdate(insertSQL, yonetici_kayit_binano_jtf1.getText(), yonetici_daire_sayisi_jtf1.getText(), dbhelper.hashPassword(yonetici_kaydol_pass_tek.getText()),yoneticici_telefon_nokayıt_jtf1.getText(),yonetici_e_posta_jtf1.getText());
             if (result > 0) {
                 System.out.println("Veri başarıyla eklendi.");
             } else {
@@ -217,7 +217,7 @@ public class PrimaryController {
         if (kullanici_kaydol_pass.getText().equals(kullanici_kaydol_pass_tek.getText())) {
 
             // Veritabanına ekleme işlemi
-            int result = sql.executeUpdate(insertSQL, kullanıcıbinanokayıt_jtf1.getText(), daireNoStr, kullanici_kaydol_pass_tek.getText(),kullanıcı_telefon_nokayıt_jtf1.getText(),kullanıci_e_posta_jtf1.getText());
+            int result = sql.executeUpdate(insertSQL, kullanıcıbinanokayıt_jtf1.getText(), daireNoStr, sql.hashPassword(kullanici_kaydol_pass_tek.getText()),kullanıcı_telefon_nokayıt_jtf1.getText(),kullanıci_e_posta_jtf1.getText());
             if (result > 0) {
                 System.out.println("Veri başarıyla eklendi.");
             } else {
@@ -243,7 +243,7 @@ public class PrimaryController {
         String secilenVeri = (String) dairenogiris_cmb.getValue();
         int index = secilenVeri.indexOf(": ");
         String daireNoStr = secilenVeri.substring(index + 2);
-        String girilenSifre = kullanicigirispass.getText();
+        String girilenSifre = dbhelper.hashPassword(kullanicigirispass.getText());
 
         try (ResultSet rs = dbhelper.executeQuery(sql, girilenKullaniciAdi, daireNoStr)) {
 
@@ -336,7 +336,7 @@ public class PrimaryController {
         String sql = "SELECT Bina_No, şifre FROM yötici_kayitlari_table WHERE Bina_No = ?";
 
         String girilenKullaniciAdi = yoneticibinano_jtf1.getText(); // Kullanıcı adını UI'den çekiyoruz
-        String girilenSifre = yöneticigirispass.getText(); // Şifreyi UI'den çekiyoruz
+        String girilenSifre = dbhelper.hashPassword(yöneticigirispass.getText()); // Şifreyi UI'den çekiyoruz
 
         try (ResultSet rs = dbhelper.executeQuery(sql, girilenKullaniciAdi)) {
 

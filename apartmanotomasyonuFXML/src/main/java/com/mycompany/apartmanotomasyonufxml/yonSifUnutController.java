@@ -94,7 +94,7 @@ public class yonSifUnutController {
             Sif_Unt_kon_jlbl.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
             return;
         } else {
-            int result = dbhelper.executeUpdate(insertSQL, yeniSifreTekrar, binano, telefonNumarasi, Sif_Unt_e_posta_jtf.getText());
+            int result = dbhelper.executeUpdate(insertSQL, dbhelper.hashPassword(yeniSifreTekrar), binano, telefonNumarasi, Sif_Unt_e_posta_jtf.getText());
             if (result > 0) {
                 Sif_Unt_kon_jlbl.setText("şifre başarıyla güncellendi.");
                     Sif_Unt_kon_jlbl.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
