@@ -40,7 +40,7 @@
             <DropShadow />
          </effect></PasswordField>
       <Label layoutX="173.0" layoutY="235.0" text="Yeni Şifre Tekrarı" />
-      <Button fx:id="yon_sif_degistir_Button" layoutX="200.0" layoutY="288.0" mnemonicParsing="false" onAction="#Sif_unut_onayla" text="Şifreyi Değiştir">
+      <Button fx:id="yon_sif_degistir_Button" layoutX="200.0" layoutY="310.0" mnemonicParsing="false" onAction="#Sif_unut_onayla" text="Şifreyi Değiştir">
          <effect>
             <DropShadow />
          </effect></Button>
@@ -54,7 +54,7 @@
             </ImageView>
          </children>
       </VBox>
-      <ToggleButton fx:id="yon_kay_toggleButton" layoutX="322.0" layoutY="253.0" mnemonicParsing="false" onAction="#toggle_yonetici_kayit" text="Show">
+      <ToggleButton fx:id="yon_kay_toggleButton" layoutX="339.0" layoutY="253.0" mnemonicParsing="false" onAction="#toggle_yonetici_kayit" text="Show">
          <effect>
             <DropShadow />
          </effect></ToggleButton>
