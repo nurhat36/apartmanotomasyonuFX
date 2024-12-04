@@ -8,6 +8,8 @@ import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
+
+import javafx.animation.ScaleTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -27,6 +29,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+
+import static javafx.util.Duration.millis;
 
 public class SecondaryController {
 
@@ -152,24 +156,18 @@ public class SecondaryController {
 
     }
     private void addHoverEffect(Control control) {
-        DropShadow defaultShadow = new DropShadow();
-        defaultShadow.setOffsetY(0);
-        defaultShadow.setColor(Color.GRAY);
+        control.setOnMouseEntered(event -> applyscaletransition(control,1.0,1.2));
+        control.setOnMouseExited(event -> applyscaletransition(control,1.2,1.0));
 
-        control.setEffect(defaultShadow);
+    }
+    private void applyscaletransition(Control control,double scale,double toscale) {
+        ScaleTransition scaleTransition = new ScaleTransition(millis(200),control);
+        scaleTransition.setFromX(scale);
+        scaleTransition.setFromY(scale);
+        scaleTransition.setToX(toscale);
+        scaleTransition.setToY(toscale);
+        scaleTransition.play();
 
-        control.setOnMouseEntered(event -> {
-            DropShadow hoverShadow = new DropShadow();
-            hoverShadow.setOffsetY(5);
-            hoverShadow.setColor(Color.GRAY);
-            control.setEffect(hoverShadow);
-            control.setTranslateY(-5);
-        });
-
-        control.setOnMouseExited(event -> {
-
-            control.setTranslateY(0);
-        });
     }
     @FXML
     private void grafikgit() throws IOException {
