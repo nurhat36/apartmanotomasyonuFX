@@ -9,6 +9,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -47,6 +49,18 @@ public class PrimaryController {
     @FXML
     private ToggleButton yon_kay_toggleButton;
     @FXML
+    private Button kul_gir_Button;
+    @FXML
+    private Button kul_kay_Button;
+    @FXML
+    private Button kul_unut_Button;
+    @FXML
+    private Button yon_gir_Button;
+    @FXML
+    private Button yon_unut_Button;
+    @FXML
+    private Button yon_kay_Button;
+    @FXML
     private TextField yon_kay_text;
     @FXML
     private TextField yon_kay_text_tek;
@@ -66,6 +80,58 @@ public class PrimaryController {
         yon_kay_text.setVisible(false);
         kul_kay_text.setVisible(false);
         kul_kay_text_tek.setVisible(false);
+        addHoverEffect(toggleButton);
+        addHoverEffect(kul_kay_toggleButton);
+        addHoverEffect(yon_kay_toggleButton);
+        addHoverEffect(yon_toggleButton);
+        addHoverEffect(kul_gir_Button);
+        addHoverEffect(kul_unut_Button);
+        addHoverEffect(kullanıcıbinano_jtf1);
+        addHoverEffect(textField);
+        addHoverEffect(kullanicigirispass);
+        addHoverEffect(kullanıcıbinanokayıt_jtf1);
+        addHoverEffect(kullanıcı_telefon_nokayıt_jtf1);
+        addHoverEffect(kullanıci_e_posta_jtf1);
+        addHoverEffect(kul_kay_text);
+        addHoverEffect(kullanici_kaydol_pass);
+        addHoverEffect(kul_kay_text_tek);
+        addHoverEffect(kullanici_kaydol_pass_tek);
+        addHoverEffect(kul_kay_toggleButton);
+        addHoverEffect(kul_kay_Button);
+        addHoverEffect(yoneticibinano_jtf1);
+        addHoverEffect(yon_sif_textField);
+        addHoverEffect(yöneticigirispass);
+        addHoverEffect(yon_gir_Button);
+        addHoverEffect(yon_unut_Button);
+        addHoverEffect(yon_kay_Button);
+        addHoverEffect(yonetici_kayit_binano_jtf1);
+        addHoverEffect(yonetici_daire_sayisi_jtf1);
+        addHoverEffect(yoneticici_telefon_nokayıt_jtf1);
+        addHoverEffect(yonetici_e_posta_jtf1);
+        addHoverEffect(yon_kay_text);
+        addHoverEffect(yonetici_kaydol_pass);
+        addHoverEffect(yon_kay_text_tek);
+        addHoverEffect(yonetici_kaydol_pass_tek);
+    }
+    private void addHoverEffect(Control control) {
+        DropShadow defaultShadow = new DropShadow();
+        defaultShadow.setOffsetY(0);
+        defaultShadow.setColor(Color.GRAY);
+
+        control.setEffect(defaultShadow);
+
+        control.setOnMouseEntered(event -> {
+            DropShadow hoverShadow = new DropShadow();
+            hoverShadow.setOffsetY(5);
+            hoverShadow.setColor(Color.GRAY);
+            control.setEffect(hoverShadow);
+            control.setTranslateY(-5);
+        });
+
+        control.setOnMouseExited(event -> {
+
+            control.setTranslateY(0);
+        });
     }
     @FXML
     private void toggle_kul_kayit(){

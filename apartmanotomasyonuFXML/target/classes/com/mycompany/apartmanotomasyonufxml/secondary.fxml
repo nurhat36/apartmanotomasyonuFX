@@ -12,6 +12,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -42,7 +43,10 @@
                         <ComboBox fx:id="daire_nocmb" layoutX="36.0" layoutY="76.0" prefHeight="26.0" prefWidth="153.0" />
                         <Label layoutX="433.0" layoutY="14.0" prefHeight="18.0" prefWidth="78.0" text="Tarih" />
                         <DatePicker fx:id="gelirtarih" layoutX="423.0" layoutY="32.0" />
-                        <Button layoutX="423.0" layoutY="77.0" mnemonicParsing="false" onAction="#aidat_geliri" text="ONAYLA" />
+                        <Button fx:id="sec_gel_onayla_Button" layoutX="423.0" layoutY="77.0" mnemonicParsing="false" onAction="#aidat_geliri" text="ONAYLA">
+                           <effect>
+                              <DropShadow />
+                           </effect></Button>
                         <Label fx:id="butce1" layoutX="708.0" layoutY="15.0" prefHeight="18.0" prefWidth="132.0" text="Bütçe: " />
                         <Label fx:id="aidat1" layoutX="708.0" layoutY="58.0" prefHeight="18.0" prefWidth="132.0" text="Aidat:" />
                         <Label fx:id="gelir_on_hata_msj" layoutX="423.0" layoutY="103.0" prefHeight="18.0" prefWidth="242.0" />
@@ -85,14 +89,26 @@
                         <Label layoutX="255.0" prefHeight="18.0" prefWidth="194.0" text="Tarih" />
                         <Label layoutX="255.0" layoutY="44.0" prefHeight="18.0" prefWidth="194.0" text="Miktar" />
                         <Spinner fx:id="gidermiktari" editable="true" layoutX="255.0" layoutY="58.0" />
-                        <Button layoutX="255.0" layoutY="91.0" mnemonicParsing="false" onAction="#dekontyukleme" text="Dekont Resmi Yükle" />
+                        <Button fx:id="sec_gid_dek_yük_Button" layoutX="255.0" layoutY="91.0" mnemonicParsing="false" onAction="#dekontyukleme" text="Dekont Resmi Yükle">
+                           <effect>
+                              <DropShadow />
+                           </effect></Button>
                         <Label fx:id="dekontyolu" layoutX="255.0" layoutY="119.0" prefHeight="18.0" prefWidth="349.0" />
-                        <Button layoutX="255.0" layoutY="140.0" mnemonicParsing="false" text="Görüntüle" />
-                        <Button layoutX="331.0" layoutY="140.0" mnemonicParsing="false" onAction="#giderOnayla" prefHeight="52.0" prefWidth="70.0" text="ONAYLA" />
+                        <Button fx:id="sec_gid_gör_Button" layoutX="255.0" layoutY="140.0" mnemonicParsing="false" text="Görüntüle">
+                           <effect>
+                              <DropShadow />
+                           </effect></Button>
+                        <Button fx:id="sec_gid_onayla_Button" layoutX="331.0" layoutY="140.0" mnemonicParsing="false" onAction="#giderOnayla" prefHeight="52.0" prefWidth="70.0" text="ONAYLA">
+                           <effect>
+                              <DropShadow />
+                           </effect></Button>
                         <Label layoutX="545.0" layoutY="12.0" prefHeight="18.0" prefWidth="194.0" text="Tablodaki dekont resmini görüntüle" />
                         <Label layoutX="545.0" layoutY="44.0" prefHeight="18.0" prefWidth="194.0" text="Dekont ID" />
                         <Spinner fx:id="dekontID" editable="true" layoutX="545.0" layoutY="58.0" />
-                        <Button layoutX="545.0" layoutY="91.0" mnemonicParsing="false" onAction="#idlidekont" text="Dekont Resmi Görüntüle" />
+                        <Button fx:id="sec_gid_dek_gör_Button" layoutX="545.0" layoutY="91.0" mnemonicParsing="false" onAction="#idlidekont" text="Dekont Resmi Görüntüle">
+                           <effect>
+                              <DropShadow />
+                           </effect></Button>
                         <Label fx:id="gider_bilgi_goster" layoutX="232.0" layoutY="192.0" prefHeight="18.0" prefWidth="289.0" />
                         <Label fx:id="butce2" layoutX="634.0" layoutY="152.0" prefHeight="18.0" prefWidth="194.0" text="Bütçe:" />
                         <Label fx:id="aidat2" layoutX="634.0" layoutY="178.0" prefHeight="18.0" prefWidth="194.0" text="Aidat" />
@@ -143,7 +159,10 @@
                               </ImageView>
                            </children>
                         </VBox>
-                        <Button layoutX="422.0" layoutY="5.0" mnemonicParsing="false" onAction="#grafikgit" text="GRAFİLKER" />
+                        <Button fx:id="sec_gid_grafik_Button" layoutX="422.0" layoutY="5.0" mnemonicParsing="false" onAction="#grafikgit" text="GRAFİLKER">
+                           <effect>
+                              <DropShadow />
+                           </effect></Button>
                      </children>
                   </AnchorPane>
             </content>
@@ -154,7 +173,7 @@
                      <children>
                         <Label layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="226.0" text="Aidatı Belirle" />
                         <Spinner fx:id="aidatbelirle" editable="true" layoutX="14.0" layoutY="32.0" />
-                        <Button layoutX="14.0" layoutY="70.0" mnemonicParsing="false" onAction="#Aidatonayla" prefHeight="26.0" prefWidth="154.0" text="ONAYLA" />
+                        <Button fx:id="sec_aidat_bel_onayla_Button" layoutX="14.0" layoutY="70.0" mnemonicParsing="false" onAction="#Aidatonayla" prefHeight="26.0" prefWidth="154.0" text="ONAYLA" />
                         <Label fx:id="aidat3" layoutX="190.0" layoutY="35.0" prefHeight="18.0" prefWidth="226.0" text="Şimdiki Aidat:" />
                         <Label fx:id="aidatbelirlemebilgi" layoutX="14.0" layoutY="111.0" prefHeight="18.0" prefWidth="226.0" />
                         <VBox layoutX="326.0" layoutY="83.0" prefHeight="422.0" prefWidth="434.0">

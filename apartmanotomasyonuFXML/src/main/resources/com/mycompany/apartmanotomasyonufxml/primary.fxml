@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -31,17 +32,35 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="kullanıcıbinano_jtf1" layoutX="143.0" layoutY="44.0" onKeyReleased="#cmbdolur" promptText="Lütfen Bina No'yu giriniz" />
-                                          <ComboBox fx:id="dairenogiris_cmb" layoutX="142.0" layoutY="91.0" prefWidth="150.0" />
+                                          <TextField fx:id="kullanıcıbinano_jtf1" layoutX="143.0" layoutY="44.0" onKeyReleased="#cmbdolur" promptText="Lütfen Bina No'yu giriniz">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></TextField>
+                                          <ComboBox fx:id="dairenogiris_cmb" layoutX="142.0" layoutY="91.0" prefWidth="150.0">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></ComboBox>
                                           <Label layoutX="143.0" layoutY="27.0" prefHeight="18.0" prefWidth="79.0" text="Bina No" />
                                           <Label layoutX="143.0" layoutY="70.0" prefHeight="18.0" prefWidth="79.0" text="Daire No" />
                                           <Label layoutX="143.0" layoutY="117.0" prefHeight="18.0" prefWidth="79.0" text="Şifre" />
                                           <PasswordField fx:id="kullanicigirispass" layoutX="143.0" layoutY="135.0" promptText="Lütfen Şifrenizi Giriniz" />
-                                          <Button layoutX="191.0" layoutY="198.0" mnemonicParsing="false" onAction="#kullanicigiris" text="Giriş Yap" />
-                                          <Button layoutX="170.0" layoutY="238.0" mnemonicParsing="false" onAction="#switchTokulsifunut" text="Şifremi Unuttum" />
+                                          <Button fx:id="kul_gir_Button" layoutX="191.0" layoutY="198.0" mnemonicParsing="false" onAction="#kullanicigiris" text="Giriş Yap">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></Button>
+                                          <Button fx:id="kul_unut_Button" layoutX="170.0" layoutY="238.0" mnemonicParsing="false" onAction="#switchTokulsifunut" text="Şifremi Unuttum">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></Button>
                                           <Label fx:id="kul_gr_hata_lbli" layoutX="92.0" layoutY="274.0" prefHeight="18.0" prefWidth="260.0" />
-                                          <ToggleButton fx:id="toggleButton" layoutX="308.0" layoutY="135.0" mnemonicParsing="false" onAction="#toggle_kullanici_giris" text="Show" />
-                                          <TextField fx:id="textField" layoutX="143.0" layoutY="135.0" />
+                                          <ToggleButton fx:id="toggleButton" layoutX="308.0" layoutY="135.0" mnemonicParsing="false" onAction="#toggle_kullanici_giris" text="Show">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></ToggleButton>
+                                          <TextField fx:id="textField" layoutX="143.0" layoutY="135.0">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></TextField>
                                        </children>
                                     </AnchorPane>
                               </content>
@@ -50,19 +69,34 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="kullanıcıbinanokayıt_jtf1" layoutX="143.0" layoutY="37.0" onKeyReleased="#cmbdolurkayıt" promptText="Bina No'yu Giriniz" />
+                                          <TextField fx:id="kullanıcıbinanokayıt_jtf1" layoutX="143.0" layoutY="37.0" onKeyReleased="#cmbdolurkayıt" promptText="Bina No'yu Giriniz">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></TextField>
                                           <Label layoutX="143.0" layoutY="20.0" prefHeight="18.0" prefWidth="84.0" text="Bina No" />
-                                          <ComboBox fx:id="dairenokayıt_cmb" layoutX="143.0" layoutY="83.0" prefWidth="150.0" />
+                                          <ComboBox fx:id="dairenokayıt_cmb" layoutX="143.0" layoutY="83.0" prefWidth="150.0">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></ComboBox>
                                           <Label layoutX="143.0" layoutY="63.0" prefHeight="18.0" prefWidth="84.0" text="Daire No" />
                                           <Label layoutX="143.0" layoutY="109.0" prefHeight="18.0" prefWidth="84.0" text="Telefon No" />
                                           <Label layoutX="143.0" layoutY="153.0" prefHeight="18.0" prefWidth="84.0" text="E-Posta" />
-                                          <TextField fx:id="kullanıcı_telefon_nokayıt_jtf1" layoutX="142.0" layoutY="127.0" promptText="0(555) 55 55" />
-                                          <TextField fx:id="kullanıci_e_posta_jtf1" layoutX="142.0" layoutY="171.0" promptText="E-Postanızı giriniz" />
+                                          <TextField fx:id="kullanıcı_telefon_nokayıt_jtf1" layoutX="142.0" layoutY="127.0" promptText="0(555) 55 55">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></TextField>
+                                          <TextField fx:id="kullanıci_e_posta_jtf1" layoutX="142.0" layoutY="171.0" promptText="E-Postanızı giriniz">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></TextField>
                                           <Label layoutX="143.0" layoutY="197.0" prefHeight="18.0" prefWidth="84.0" text="Şİfre" />
                                           <PasswordField fx:id="kullanici_kaydol_pass" layoutX="143.0" layoutY="215.0" />
                                           <Label layoutX="143.0" layoutY="241.0" prefHeight="18.0" prefWidth="84.0" text="Şifre Tekrarı" />
                                           <PasswordField fx:id="kullanici_kaydol_pass_tek" layoutX="142.0" layoutY="259.0" />
-                                          <Button layoutX="188.0" layoutY="294.0" mnemonicParsing="false" onAction="#kullanicikaydol" text="Kayıt Ol" />
+                                          <Button fx:id="kul_kay_Button" layoutX="188.0" layoutY="294.0" mnemonicParsing="false" onAction="#kullanicikaydol" text="Kayıt Ol">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></Button>
                                           <Label fx:id="kul_ky_hata_lbli" layoutX="61.0" layoutY="318.0" prefHeight="18.0" prefWidth="332.0" />
                                           <VBox layoutY="87.0" prefHeight="145.0" prefWidth="128.0">
                                              <children>
@@ -73,9 +107,18 @@
                                                 </ImageView>
                                              </children>
                                           </VBox>
-                                          <TextField fx:id="kul_kay_text" layoutX="144.0" layoutY="215.0" />
-                                          <TextField fx:id="kul_kay_text_tek" layoutX="143.0" layoutY="259.0" />
-                                          <ToggleButton fx:id="kul_kay_toggleButton" layoutX="294.0" layoutY="259.0" mnemonicParsing="false" onAction="#toggle_kul_kayit" text="Show" />
+                                          <TextField fx:id="kul_kay_text" layoutX="144.0" layoutY="215.0">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></TextField>
+                                          <TextField fx:id="kul_kay_text_tek" layoutX="143.0" layoutY="259.0">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></TextField>
+                                          <ToggleButton fx:id="kul_kay_toggleButton" layoutX="294.0" layoutY="259.0" mnemonicParsing="false" onAction="#toggle_kul_kayit" text="Show">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></ToggleButton>
                                        </children>
                                     </AnchorPane>
                               </content>
@@ -96,15 +139,30 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="231.0" prefWidth="298.0">
                                        <children>
-                                          <TextField fx:id="yoneticibinano_jtf1" layoutX="142.0" layoutY="46.0" promptText="Lütfen Bina Noyu giriniz" />
+                                          <TextField fx:id="yoneticibinano_jtf1" layoutX="142.0" layoutY="46.0" promptText="Lütfen Bina Noyu giriniz">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></TextField>
                                           <Label layoutX="142.0" layoutY="29.0" prefHeight="18.0" prefWidth="75.0" text="Bina No" />
                                           <Label layoutX="142.0" layoutY="87.0" prefHeight="18.0" prefWidth="76.0" text="Şifre" />
-                                          <Button layoutX="191.0" layoutY="158.0" mnemonicParsing="false" onAction="#switchToSecondary" text="Giriş Yap" />
-                                          <Button layoutX="161.0" layoutY="197.0" mnemonicParsing="false" onAction="#switchToyonsifunut" prefHeight="26.0" prefWidth="122.0" text="Şifremi Unuttum" />
+                                          <Button fx:id="yon_gir_Button" layoutX="191.0" layoutY="158.0" mnemonicParsing="false" onAction="#switchToSecondary" text="Giriş Yap">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></Button>
+                                          <Button fx:id="yon_unut_Button" layoutX="161.0" layoutY="197.0" mnemonicParsing="false" onAction="#switchToyonsifunut" prefHeight="26.0" prefWidth="122.0" text="Şifremi Unuttum">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></Button>
                                           <PasswordField fx:id="yöneticigirispass" layoutX="143.0" layoutY="106.0" promptText="Lütfen Şifrenizi Giriniz" />
                                           <Label fx:id="yön_gr_hata_lbli" layoutX="111.0" layoutY="237.0" prefHeight="18.0" prefWidth="221.0" />
-                                          <ToggleButton fx:id="yon_toggleButton" layoutX="300.0" layoutY="106.0" mnemonicParsing="false" onAction="#toggle_yonetici_giris" text="Show" />
-                                          <TextField fx:id="yon_sif_textField" layoutX="144.0" layoutY="106.0" />
+                                          <ToggleButton fx:id="yon_toggleButton" layoutX="300.0" layoutY="106.0" mnemonicParsing="false" onAction="#toggle_yonetici_giris" text="Show">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></ToggleButton>
+                                          <TextField fx:id="yon_sif_textField" layoutX="144.0" layoutY="106.0">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></TextField>
                                        </children>
                                     </AnchorPane>
                               </content>
@@ -117,7 +175,7 @@
                                           <TextField fx:id="yonetici_daire_sayisi_jtf1" layoutX="143.0" layoutY="76.0" promptText="Daire sayısını Giriniz" />
                                           <TextField fx:id="yoneticici_telefon_nokayıt_jtf1" layoutX="144.0" layoutY="124.0" promptText="0(555) 55 55" />
                                           <TextField fx:id="yonetici_e_posta_jtf1" layoutX="142.0" layoutY="171.0" promptText="E-Postanızı giriniz" />
-                                          <Button layoutX="236.0" layoutY="286.0" mnemonicParsing="false" onAction="#yön_kaydol" text="Kayıt Ol" />
+                                          <Button fx:id="yon_kay_Button" layoutX="236.0" layoutY="305.0" mnemonicParsing="false" onAction="#yön_kaydol" text="Kayıt Ol" />
                                           <Label layoutX="142.0" layoutY="56.0" prefHeight="18.0" prefWidth="82.0" text="Daire Sayisi" />
                                           <Label layoutX="142.0" layoutY="14.0" prefHeight="18.0" prefWidth="82.0" text="Bina No" />
                                           <Label layoutX="144.0" layoutY="105.0" prefHeight="18.0" prefWidth="82.0" text="Telefon No" />

@@ -13,18 +13,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -111,6 +103,20 @@ public class SecondaryController {
     private TableColumn<GiderVerisi, Object> giddekontColumn;
     @FXML
     private Label gider_bilgi_goster;
+    @FXML
+    private Button sec_gel_onayla_Button;
+    @FXML
+    private Button sec_gid_dek_yük_Button;
+    @FXML
+    private Button sec_gid_gör_Button;
+    @FXML
+    private Button sec_gid_onayla_Button;
+    @FXML
+    private Button sec_gid_grafik_Button;
+    @FXML
+    private Button sec_gid_dek_gör_Button;
+    @FXML
+    private Button sec_aidat_bel_onayla_Button;
 
     @FXML
     public void initialize() {
@@ -135,6 +141,35 @@ public class SecondaryController {
         gidermiktari.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100000, 500));
         dekontID.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100000, 0));
         aidatbelirle.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100000, aidat));
+
+        addHoverEffect(sec_gel_onayla_Button);
+        addHoverEffect(sec_gid_dek_yük_Button);
+        addHoverEffect(sec_gid_gör_Button);
+        addHoverEffect(sec_gid_onayla_Button);
+        addHoverEffect(sec_gid_grafik_Button);
+        addHoverEffect(sec_gid_dek_gör_Button);
+        addHoverEffect(sec_aidat_bel_onayla_Button);
+
+    }
+    private void addHoverEffect(Control control) {
+        DropShadow defaultShadow = new DropShadow();
+        defaultShadow.setOffsetY(0);
+        defaultShadow.setColor(Color.GRAY);
+
+        control.setEffect(defaultShadow);
+
+        control.setOnMouseEntered(event -> {
+            DropShadow hoverShadow = new DropShadow();
+            hoverShadow.setOffsetY(5);
+            hoverShadow.setColor(Color.GRAY);
+            control.setEffect(hoverShadow);
+            control.setTranslateY(-5);
+        });
+
+        control.setOnMouseExited(event -> {
+
+            control.setTranslateY(0);
+        });
     }
     @FXML
     private void grafikgit() throws IOException {

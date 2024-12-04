@@ -8,4 +8,5 @@ module com.mycompany.apartmanotomasyonufxml {
     exports com.mycompany.apartmanotomasyonufxml;
     requires mssql.jdbc;
     requires java.desktop;
+    requires java.logging;
 }

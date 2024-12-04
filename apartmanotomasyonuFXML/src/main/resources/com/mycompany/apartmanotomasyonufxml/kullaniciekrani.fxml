@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -82,7 +83,10 @@
                               <Label layoutX="39.0" layoutY="14.0" prefHeight="18.0" prefWidth="155.0" text="Gider Dekontunu Görüntüle" />
                               <Spinner fx:id="dekontID" layoutX="42.0" layoutY="55.0" />
                               <Label layoutX="39.0" layoutY="37.0" prefHeight="18.0" prefWidth="155.0" text="Dekont ID" />
-                              <Button layoutX="57.0" layoutY="98.0" mnemonicParsing="false" onAction="#idlidekont" text="Dekontu Görüntüle" />
+                              <Button fx:id="kull_ekr_dekont_gör_Button" layoutX="57.0" layoutY="98.0" mnemonicParsing="false" onAction="#idlidekont" text="Dekontu Görüntüle">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect></Button>
                               <Label fx:id="dekontgoruntule_uyari" layoutX="38.0" layoutY="134.0" prefHeight="18.0" prefWidth="155.0" />
                            </children>
                         </Pane>

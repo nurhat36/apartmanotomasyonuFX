@@ -4,13 +4,13 @@
  */
 package com.mycompany.apartmanotomasyonufxml;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -40,6 +40,39 @@ public class yonSifUnutController {
     private TextField sif_unt_yenisifretekrar_pwf;
     @FXML
     private Label Sif_Unt_kon_jlbl;
+    @FXML
+    private Button yon_sif_degistir_Button;
+
+    @FXML
+    public void initialize() {
+        addHoverEffect(Sif_Unt_binano_jtf);
+        addHoverEffect(Sif_Unt_tel_no_jtf);
+        addHoverEffect(Sif_Unt_e_posta_jtf);
+        addHoverEffect(sif_unt_yeni_sif_pwf);
+        addHoverEffect(sif_unt_yenisifretekrar_pwf);
+        addHoverEffect(yon_kay_toggleButton);
+        addHoverEffect(yon_sif_degistir_Button);
+    }
+    private void addHoverEffect(Control control) {
+        DropShadow defaultShadow = new DropShadow();
+        defaultShadow.setOffsetY(0);
+        defaultShadow.setColor(Color.GRAY);
+
+        control.setEffect(defaultShadow);
+
+        control.setOnMouseEntered(event -> {
+            DropShadow hoverShadow = new DropShadow();
+            hoverShadow.setOffsetY(5);
+            hoverShadow.setColor(Color.GRAY);
+            control.setEffect(hoverShadow);
+            control.setTranslateY(-5);
+        });
+
+        control.setOnMouseExited(event -> {
+
+            control.setTranslateY(0);
+        });
+    }
     @FXML
     private void toggle_yonetici_kayit(){
         if (yon_kay_toggleButton.isSelected()) {
