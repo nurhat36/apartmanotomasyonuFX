@@ -93,12 +93,12 @@
                            <effect>
                               <DropShadow />
                            </effect></Button>
-                        <Label fx:id="dekontyolu" layoutX="255.0" layoutY="119.0" prefHeight="18.0" prefWidth="349.0" />
-                        <Button fx:id="sec_gid_gör_Button" layoutX="246.0" layoutY="140.0" mnemonicParsing="false" text="Görüntüle">
+                        <Label fx:id="dekontyolu" layoutX="247.0" layoutY="135.0" prefHeight="18.0" prefWidth="349.0" />
+                        <Button fx:id="sec_gid_gör_Button" layoutX="246.0" layoutY="156.0" mnemonicParsing="false" onAction="#dekontuac" text="Görüntüle">
                            <effect>
                               <DropShadow />
                            </effect></Button>
-                        <Button fx:id="sec_gid_onayla_Button" layoutX="331.0" layoutY="152.0" mnemonicParsing="false" onAction="#giderOnayla" prefHeight="52.0" prefWidth="70.0" text="ONAYLA">
+                        <Button fx:id="sec_gid_onayla_Button" layoutX="331.0" layoutY="156.0" mnemonicParsing="false" onAction="#giderOnayla" prefHeight="52.0" prefWidth="70.0" text="ONAYLA">
                            <effect>
                               <DropShadow />
                            </effect></Button>
