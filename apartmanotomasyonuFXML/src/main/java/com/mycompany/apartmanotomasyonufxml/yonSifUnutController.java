@@ -58,8 +58,8 @@ public class yonSifUnutController {
         addHoverEffect(yon_sif_degistir_Button);
     }
     private void addHoverEffect(Control control) {
-        control.setOnMouseEntered(event -> applyscaletransition(control,1.0,1.2));
-        control.setOnMouseExited(event -> applyscaletransition(control,1.2,1.0));
+        control.setOnMouseEntered(event -> applyscaletransition(control,1.0,1.1));
+        control.setOnMouseExited(event -> applyscaletransition(control,1.1,1.0));
 
     }
     private void applyscaletransition(Control control,double scale,double toscale) {

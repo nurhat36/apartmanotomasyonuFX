@@ -171,11 +171,26 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="yonetici_kayit_binano_jtf1" layoutX="143.0" layoutY="30.0" promptText="Lütfen bina No'yu girinizi" />
-                                          <TextField fx:id="yonetici_daire_sayisi_jtf1" layoutX="143.0" layoutY="76.0" promptText="Daire sayısını Giriniz" />
-                                          <TextField fx:id="yoneticici_telefon_nokayıt_jtf1" layoutX="144.0" layoutY="124.0" promptText="0(555) 55 55" />
-                                          <TextField fx:id="yonetici_e_posta_jtf1" layoutX="142.0" layoutY="171.0" promptText="E-Postanızı giriniz" />
-                                          <Button fx:id="yon_kay_Button" layoutX="236.0" layoutY="305.0" mnemonicParsing="false" onAction="#yön_kaydol" text="Kayıt Ol" />
+                                          <TextField fx:id="yonetici_kayit_binano_jtf1" layoutX="143.0" layoutY="30.0" promptText="Lütfen bina No'yu girinizi">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></TextField>
+                                          <TextField fx:id="yonetici_daire_sayisi_jtf1" layoutX="143.0" layoutY="76.0" promptText="Daire sayısını Giriniz">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></TextField>
+                                          <TextField fx:id="yoneticici_telefon_nokayıt_jtf1" layoutX="144.0" layoutY="124.0" promptText="0(555) 55 55">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></TextField>
+                                          <TextField fx:id="yonetici_e_posta_jtf1" layoutX="142.0" layoutY="171.0" promptText="E-Postanızı giriniz">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></TextField>
+                                          <Button fx:id="yon_kay_Button" layoutX="236.0" layoutY="292.0" mnemonicParsing="false" onAction="#yön_kaydol" text="Kayıt Ol">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></Button>
                                           <Label layoutX="142.0" layoutY="56.0" prefHeight="18.0" prefWidth="82.0" text="Daire Sayisi" />
                                           <Label layoutX="142.0" layoutY="14.0" prefHeight="18.0" prefWidth="82.0" text="Bina No" />
                                           <Label layoutX="144.0" layoutY="105.0" prefHeight="18.0" prefWidth="82.0" text="Telefon No" />
@@ -194,9 +209,18 @@
                                                 </ImageView>
                                              </children>
                                           </VBox>
-                                          <TextField fx:id="yon_kay_text" layoutX="143.0" layoutY="215.0" />
-                                          <TextField fx:id="yon_kay_text_tek" layoutX="145.0" layoutY="260.0" />
-                                          <ToggleButton fx:id="yon_kay_toggleButton" layoutX="310.0" layoutY="260.0" mnemonicParsing="false" onAction="#toggle_yonetici_kayit" text="Show" />
+                                          <TextField fx:id="yon_kay_text" layoutX="143.0" layoutY="215.0">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></TextField>
+                                          <TextField fx:id="yon_kay_text_tek" layoutX="145.0" layoutY="260.0">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></TextField>
+                                          <ToggleButton fx:id="yon_kay_toggleButton" layoutX="310.0" layoutY="260.0" mnemonicParsing="false" onAction="#toggle_yonetici_kayit" text="Show">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></ToggleButton>
                                        </children>
                                     </AnchorPane>
                               </content>
