@@ -94,7 +94,7 @@
                               <DropShadow />
                            </effect></Button>
                         <Label fx:id="dekontyolu" layoutX="255.0" layoutY="119.0" prefHeight="18.0" prefWidth="349.0" />
-                        <Button fx:id="sec_gid_gör_Button" layoutX="246.0" layoutY="140.0" mnemonicParsing="false" text="Görüntüle">
+                        <Button fx:id="sec_gid_gör_Button" layoutX="246.0" layoutY="140.0" mnemonicParsing="false" onAction="#dekontuac" text="Görüntüle">
                            <effect>
                               <DropShadow />
                            </effect></Button>
