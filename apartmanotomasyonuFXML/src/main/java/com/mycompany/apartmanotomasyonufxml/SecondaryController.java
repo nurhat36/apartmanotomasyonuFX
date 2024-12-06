@@ -316,6 +316,8 @@ public class SecondaryController {
             dbhelper.close();
         }
         GidertablosunuDoldur();
+        dekontyolu.setText(null);
+
 
     }
 
