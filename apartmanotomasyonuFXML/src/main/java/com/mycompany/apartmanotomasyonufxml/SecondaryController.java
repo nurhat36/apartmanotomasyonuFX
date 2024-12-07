@@ -509,22 +509,48 @@ public class SecondaryController {
                 // Alternatif bir işlem yapabilirsiniz.
             }
         } else {
-            // Veritabanına ekleme işlemi
-            int result = dbhelper.executeUpdate(insertSQL, PrimaryController.bina_no, daireNoStr, gelirtarih.getValue(), aidatmiktari.getValue());
-            if (result > 0) {
-                System.out.println("Veri başarıyla eklendi." + result);
-            } else {
-                gelir_on_hata_msj.setText("Veri ekleme başarısız.");
-                System.err.println("Veri ekleme başarısız.");
-            }
-            dbhelper.close();
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle(" Ödeme Uyarısı");
+            alert.setHeaderText("Bu ödemeyi onaylıyor musunuz" +
+                    "!");
+            alert.setContentText(String.format("Yapılan ödeme: %.2f TL\nAidat tutarı: %.2f TL\n" +
+                    "bu ödemeyi onaylıyormusunuz?", odemeTutari, aidatTutari));
 
-            if (result > 0) {
-                System.out.println("Kayıt başarıyla eklendi!");
-                gelir_on_hata_msj.setText("Kayıt başarıyla eklendi!");
+            // "Yes" ve "No" butonları
+            ButtonType yesButton = new ButtonType("Evet");
+            ButtonType noButton = new ButtonType("Hayır");
+            alert.getButtonTypes().setAll(yesButton, noButton);
+
+            // Kullanıcı seçimini al
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.isPresent() && result.get() == yesButton) {
+                // Fazla ödeme başka aya aktarılacak
+                System.out.println("Kullanıcı fazla ödemeyi başka aya aktarmayı kabul etti.");
+                int result1 = dbhelper.executeUpdate(insertSQL, PrimaryController.bina_no, daireNoStr, gelirtarih.getValue(), aidatmiktari.getValue());
+                if (result1 > 0) {
+                    System.out.println("Veri başarıyla eklendi." + result1);
+                } else {
+                    gelir_on_hata_msj.setText("Veri ekleme başarısız.");
+                    System.err.println("Veri ekleme başarısız.");
+                }
+                dbhelper.close();
+
+                if (result1 > 0) {
+                    System.out.println("Kayıt başarıyla eklendi!");
+                    gelir_on_hata_msj.setText("Kayıt başarıyla eklendi!");
+                }
+                // Normal ödeme işlemi
+                System.out.println("Ödeme başarıyla kaydedildi.");
+
+
+                // Burada başka aya aktarım mantığını uygulayabilirsiniz.
+            } else {
+                // Fazla ödeme işlemi iptal edildi
+                System.out.println("Kullanıcı fazla ödemeyi kabul etmedi.");
+                return;
+                // Alternatif bir işlem yapabilirsiniz.
             }
-            // Normal ödeme işlemi
-            System.out.println("Ödeme başarıyla kaydedildi.");
         }
 
 
