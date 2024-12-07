@@ -31,10 +31,10 @@
                      <children>
                         <TableView fx:id="Gelir_table" layoutX="-2.0" layoutY="137.0" prefHeight="510.0" prefWidth="870.0">
                           <columns>
-                            <TableColumn fx:id="binaNoColumn" prefWidth="95.20001220703125" text="BİNA NO" />
-                            <TableColumn fx:id="daireNoColumn" text="DAİRE NO" />
-                              <TableColumn fx:id="tarihColumn" prefWidth="114.39996337890625" text="TARİH" />
-                              <TableColumn fx:id="miktarColumn" prefWidth="140.79998779296875" text="MİKTAR (TL)" />
+                            <TableColumn fx:id="binaNoColumn" prefWidth="140.80001258850098" text="BİNA NO" />
+                            <TableColumn fx:id="daireNoColumn" prefWidth="191.20001220703125" text="DAİRE NO" />
+                              <TableColumn fx:id="tarihColumn" prefWidth="239.19998168945312" text="TARİH" />
+                              <TableColumn fx:id="miktarColumn" prefWidth="299.2000732421875" text="MİKTAR (TL)" />
                           </columns>
                         </TableView>
                         <Label layoutX="36.0" layoutY="14.0" prefHeight="18.0" prefWidth="78.0" text="Miktar" />
@@ -109,7 +109,7 @@
                            <effect>
                               <DropShadow />
                            </effect></Button>
-                        <Label fx:id="gider_bilgi_goster" layoutX="232.0" layoutY="192.0" prefHeight="18.0" prefWidth="289.0" />
+                        <Label fx:id="gider_bilgi_goster" layoutX="406.0" layoutY="199.0" prefHeight="18.0" prefWidth="289.0" />
                         <Label fx:id="butce2" layoutX="634.0" layoutY="152.0" prefHeight="18.0" prefWidth="194.0" text="Bütçe:" />
                         <Label fx:id="aidat2" layoutX="634.0" layoutY="178.0" prefHeight="18.0" prefWidth="194.0" text="Aidat" />
                         <VBox layoutX="122.0" layoutY="22.0" prefHeight="140.0" prefWidth="43.0">

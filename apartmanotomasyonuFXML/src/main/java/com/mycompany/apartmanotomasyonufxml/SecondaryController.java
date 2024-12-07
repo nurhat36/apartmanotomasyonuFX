@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.Vector;
 
 import javafx.animation.ScaleTransition;
@@ -461,21 +462,72 @@ public class SecondaryController {
         String secilenVeri = (String) daire_nocmb.getValue();
         int index = secilenVeri.indexOf(": ");
         String daireNoStr = secilenVeri.substring(index + 2);
+        double odemeTutari = aidatmiktari.getValue(); // Kullanıcının yaptığı ödeme
+        double aidatTutari = aidat; // Aylık aidat tutarı
+        double fazlaOdeme = odemeTutari - aidatTutari;
+        if (fazlaOdeme > 0) {
+            // Fazla ödeme uyarısı
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Fazla Ödeme Uyarısı");
+            alert.setHeaderText("Fazla ödeme yapıldı!");
+            alert.setContentText(String.format("Yapılan ödeme: %.2f TL\nAidat tutarı: %.2f TL\nFazla ödeme: %.2f TL\n" +
+                    "Fazla ödemeyi başka bir aya eklemek ister misiniz?", odemeTutari, aidatTutari, fazlaOdeme));
 
-        // Veritabanına ekleme işlemi
-        int result = dbhelper.executeUpdate(insertSQL, PrimaryController.bina_no, daireNoStr, gelirtarih.getValue(), aidatmiktari.getValue());
-        if (result > 0) {
-            System.out.println("Veri başarıyla eklendi." + result);
+            // "Yes" ve "No" butonları
+            ButtonType yesButton = new ButtonType("Evet");
+            ButtonType noButton = new ButtonType("Hayır");
+            alert.getButtonTypes().setAll(yesButton, noButton);
+
+            // Kullanıcı seçimini al
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.isPresent() && result.get() == yesButton) {
+                // Fazla ödeme başka aya aktarılacak
+                System.out.println("Kullanıcı fazla ödemeyi başka aya aktarmayı kabul etti.");
+                int result1 = dbhelper.executeUpdate(insertSQL, PrimaryController.bina_no, daireNoStr, gelirtarih.getValue(), aidatmiktari.getValue());
+                if (result1 > 0) {
+                    System.out.println("Veri başarıyla eklendi." + result1);
+                } else {
+                    gelir_on_hata_msj.setText("Veri ekleme başarısız.");
+                    System.err.println("Veri ekleme başarısız.");
+                }
+                dbhelper.close();
+
+                if (result1 > 0) {
+                    System.out.println("Kayıt başarıyla eklendi!");
+                    gelir_on_hata_msj.setText("Kayıt başarıyla eklendi!");
+                }
+                // Normal ödeme işlemi
+                System.out.println("Ödeme başarıyla kaydedildi.");
+
+
+                // Burada başka aya aktarım mantığını uygulayabilirsiniz.
+            } else {
+                // Fazla ödeme işlemi iptal edildi
+                System.out.println("Kullanıcı fazla ödemeyi kabul etmedi.");
+                return;
+                // Alternatif bir işlem yapabilirsiniz.
+            }
         } else {
-            gelir_on_hata_msj.setText("Veri ekleme başarısız.");
-            System.err.println("Veri ekleme başarısız.");
-        }
-        dbhelper.close();
+            // Veritabanına ekleme işlemi
+            int result = dbhelper.executeUpdate(insertSQL, PrimaryController.bina_no, daireNoStr, gelirtarih.getValue(), aidatmiktari.getValue());
+            if (result > 0) {
+                System.out.println("Veri başarıyla eklendi." + result);
+            } else {
+                gelir_on_hata_msj.setText("Veri ekleme başarısız.");
+                System.err.println("Veri ekleme başarısız.");
+            }
+            dbhelper.close();
 
-        if (result > 0) {
-            System.out.println("Kayıt başarıyla eklendi!");
-            gelir_on_hata_msj.setText("Kayıt başarıyla eklendi!");
+            if (result > 0) {
+                System.out.println("Kayıt başarıyla eklendi!");
+                gelir_on_hata_msj.setText("Kayıt başarıyla eklendi!");
+            }
+            // Normal ödeme işlemi
+            System.out.println("Ödeme başarıyla kaydedildi.");
         }
+
+
         gelirlerdoldur();
         butceyaz();
     }
