@@ -297,27 +297,50 @@ public class SecondaryController {
     private void giderisqlegonder(String Gider) {
         SQLHelper dbhelper = new SQLHelper();
         String insertSQL = "INSERT INTO Bina_Giderleri_table (Bina_no, tarih, Gidar_Türü, miktar, dekont) VALUES (?, ?, ?, ?, ?)";
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        double odemeTutari = gidermiktari.getValue(); // Kullanıcının yaptığı ödeme
+        String odemeturu = Gider;
+        alert.setTitle(" Ödeme Uyarısı");
+        alert.setHeaderText("Bu ödemeyi onaylıyor musunuz" +
+                "!");
+        alert.setContentText(String.format("Yapılan ödeme: %.2f TL\nÖdeme türü: %s\n " +
+                "Bu ödemeyi onaylıyormusunuz?", odemeTutari,odemeturu));
 
-        try (FileInputStream fis = new FileInputStream(new File(resimyolu))) {
-            int fileLength = (int) new File(resimyolu).length();
+        // "Yes" ve "No" butonları
+        ButtonType yesButton = new ButtonType("Evet");
+        ButtonType noButton = new ButtonType("Hayır");
+        alert.getButtonTypes().setAll(yesButton, noButton);
 
-            // Veritabanına ekleme işlemi
-            int result = dbhelper.executeUpdateresim(insertSQL, PrimaryController.bina_no, gidertarih.getValue(), Gider, gidermiktari.getValue(), fis, fileLength);
+        // Kullanıcı seçimini al
+        Optional<ButtonType> result = alert.showAndWait();
 
-            if (result > 0) {
-                System.out.println("Veri başarıyla eklendi.");
-                gider_bilgi_goster.setText("Kayıt başarıyla eklendi!");
-            } else {
-                gider_bilgi_goster.setText("Veri ekleme başarısız.");
-                System.err.println("Veri ekleme başarısız.");
+        if (result.isPresent() && result.get() == yesButton) {
+            try (FileInputStream fis = new FileInputStream(new File(resimyolu))) {
+                int fileLength = (int) new File(resimyolu).length();
+
+                // Veritabanına ekleme işlemi
+                int result1 = dbhelper.executeUpdateresim(insertSQL, PrimaryController.bina_no, gidertarih.getValue(), Gider, gidermiktari.getValue(), fis, fileLength);
+
+                if (result1 > 0) {
+                    System.out.println("Veri başarıyla eklendi.");
+                    gider_bilgi_goster.setText("Kayıt başarıyla eklendi!");
+                } else {
+                    gider_bilgi_goster.setText("Veri ekleme başarısız.");
+                    System.err.println("Veri ekleme başarısız.");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                dbhelper.close();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            dbhelper.close();
+            GidertablosunuDoldur();
+            dekontyolu.setText(null);
+        }else{
+            System.out.println("onaylanmadı");
+
         }
-        GidertablosunuDoldur();
-        dekontyolu.setText(null);
+
+
 
 
     }
