@@ -299,12 +299,12 @@ public class SecondaryController {
         String insertSQL = "INSERT INTO Bina_Giderleri_table (Bina_no, tarih, Gidar_Türü, miktar, dekont) VALUES (?, ?, ?, ?, ?)";
         Alert alert = new Alert(AlertType.CONFIRMATION);
         double odemeTutari = gidermiktari.getValue(); // Kullanıcının yaptığı ödeme
-        String odemeturu = Gider;
+
         alert.setTitle(" Ödeme Uyarısı");
         alert.setHeaderText("Bu ödemeyi onaylıyor musunuz" +
                 "!");
         alert.setContentText(String.format("Yapılan ödeme: %.2f TL\nÖdeme türü: %s\n " +
-                "Bu ödemeyi onaylıyormusunuz?", odemeTutari,odemeturu));
+                "Bu ödemeyi onaylıyormusunuz?", odemeTutari,Gider));
 
         // "Yes" ve "No" butonları
         ButtonType yesButton = new ButtonType("Evet");
