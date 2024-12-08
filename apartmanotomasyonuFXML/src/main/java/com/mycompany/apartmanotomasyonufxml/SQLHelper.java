@@ -75,6 +75,30 @@ public class SQLHelper {
         }
         return result;
     }
+    public int executeUpdatesikayet(String sql, String binaNo,String daire_no, Object tarih, String giderTur, Object miktar, FileInputStream fis, int fileLength) {
+        int result = 0;
+
+        try  {
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, binaNo);
+            pstmt.setString(2, daire_no);
+            pstmt.setObject(3, tarih);
+            pstmt.setString(4, giderTur);
+            pstmt.setObject(5, miktar);
+
+            // Dekont olarak resmi InputStream ile ekliyoruz
+            if (fis != null) {
+                pstmt.setBinaryStream(6, fis, fileLength);
+            } else {
+                pstmt.setNull(6, java.sql.Types.VARBINARY);
+            }
+
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
     // Veritabanı bağlantısını kapatma metodu
     public void close() {

@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Optional;
 import java.util.Vector;
 
 import javafx.animation.ScaleTransition;
@@ -41,6 +42,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+
+import javax.swing.*;
 
 /**
  *
@@ -85,7 +88,47 @@ public class kullaniciekraniController {
     @FXML
     private Button kull_ekr_dekont_gör_Button;
     @FXML
+    private Button grafikgit;
+    @FXML
+    private Button sikayet_resim_yukle;
+    @FXML
+    private Button sikayet_resim_goruntule;
+    @FXML
+    private Button secilen_resim_gor;
+    @FXML
+    private Button sikayet_onayla;
+    @FXML
+    private TextArea sikayet_aciklamasi;
+    @FXML
+    private Spinner<Integer> secilen_resim_spinner;
+    @FXML
+    private Label secilen_resim_url_lbl;
+    @FXML
+    private Label uyarı_lbl;
+    @FXML
+    private Label ID_uyarı_lbl;
+    @FXML
     private String tarih;
+    private String resimyolu;
+    @FXML
+    private DatePicker sikayet_tarihi;
+    @FXML
+    private TableView<Sikayetler> sikayet_table;
+    @FXML
+    private TableColumn<Sikayetler, Integer> sikayetidColumn;
+    @FXML
+    private TableColumn<Sikayetler, Integer> sikayetbinaNoColumn;
+    @FXML
+    private TableColumn<Sikayetler, Integer> sikayetdaireNoColumn;
+    @FXML
+    private TableColumn<Sikayetler, String> sikayettarihColumn;
+    @FXML
+    private TableColumn<Sikayetler, String> sikayetturColumn;
+    @FXML
+    private TableColumn<Sikayetler, Object> cozulmedurumuColumn;
+    @FXML
+    private TableColumn<Sikayetler, Object> sikayetresimColumn;
+
     public void initialize() {
 
         binaNoColumn.setCellValueFactory(new PropertyValueFactory<>("binaNo"));
@@ -99,18 +142,277 @@ public class kullaniciekraniController {
         turColumn.setCellValueFactory(new PropertyValueFactory<>("giderturu"));
         gidmiktarColumn.setCellValueFactory(new PropertyValueFactory<>("miktar"));
         giddekontColumn.setCellValueFactory(new PropertyValueFactory<>("dekont"));
+
+        sikayetidColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        sikayetbinaNoColumn.setCellValueFactory(new PropertyValueFactory<>("binaNo"));
+        sikayetdaireNoColumn.setCellValueFactory(new PropertyValueFactory<>("daireNo"));
+        sikayettarihColumn.setCellValueFactory(new PropertyValueFactory<>("tarih"));
+        sikayetturColumn.setCellValueFactory(new PropertyValueFactory<>("sikayet"));
+        cozulmedurumuColumn.setCellValueFactory(new PropertyValueFactory<>("cozulmedurumu"));
+        sikayetresimColumn.setCellValueFactory(new PropertyValueFactory<>("dekont"));
         butceyaz();
-        
+        sikayettablosunuDoldur();
+        cozulmedurumuColumn.setCellFactory(column -> {
+            return new TableCell<Sikayetler, Object>() {
+                @Override
+                protected void updateItem(Object item, boolean empty) {
+                    super.updateItem(item, empty);
+
+                    if (empty || item == null) {
+                        setText(null);
+                        setStyle("");
+                        return;
+                    }
+
+                    setText(item.toString());
+                    String cozulmeDurumu = item.toString().toLowerCase();
+                    switch (cozulmeDurumu) {
+                        case "çözülmedi":
+                            setStyle("-fx-background-color: red; -fx-text-fill: white;");
+                            break;
+                        case "çözüldü":
+                            setStyle("-fx-background-color: green; -fx-text-fill: white;");
+                            break;
+                        case "çözülmeye çalışılıyor":
+                            setStyle("-fx-background-color: yellow; -fx-text-fill: black;");
+                            break;
+                        default:
+                            setStyle("");
+                            break;
+                    }
+                }
+            };
+        });
         aidatyaz();
         gelirlerdoldur();
         GidertablosunuDoldur();
         kull_ekr_ust_lbl1();
         
         dekontID.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100000, 0));
+        secilen_resim_spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100000, 0));
 
         addHoverEffect(kull_ekr_dekont_gör_Button);
+        addHoverEffect(grafikgit);
+        addHoverEffect(sikayet_resim_yukle);
+        addHoverEffect(sikayet_resim_goruntule);
+        addHoverEffect(secilen_resim_gor);
+        addHoverEffect(sikayet_onayla);
+    }
+    private void sikayettablosunuDoldur() {
+        SQLHelper dbhelper = new SQLHelper();
+        String sql = "SELECT ID,bina_no,daire_no, tarih, sikayet, cozulme_durumu, sikayet_resmi FROM sikayet_table where bina_no=?";
+        ObservableList<Sikayetler> sikayetListesi = FXCollections.observableArrayList();
+
+        try (ResultSet rs = dbhelper.executeQuery(sql, PrimaryController.bina_no)) {
+            while (rs.next()) {
+                int id = rs.getInt("ID");
+                int binaNo = rs.getInt("bina_no");
+                int daireNo = rs.getInt("daire_no");
+                String tarih = rs.getString("tarih");
+                String tur = rs.getString("sikayet");
+                System.out.println(tur);
+                String cozulme_durumu = rs.getString("cozulme_durumu");
+                Object sikayet_resmi = rs.getObject("sikayet_resmi");
+
+                // Listeye yeni satır ekle
+                sikayetListesi.add(new Sikayetler(id, binaNo,daireNo, tarih, tur, cozulme_durumu, sikayet_resmi));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // Tabloya verileri ekle
+        sikayet_table.setItems(sikayetListesi);
+    }
+    @FXML
+    private void giderisqlegonder() {
+        SQLHelper dbhelper = new SQLHelper();
+        String insertSQL = "INSERT INTO sikayet_table (bina_no,daire_no, tarih, sikayet, cozulme_durumu, sikayet_resmi) VALUES (?, ?, ?, ?, ?,?)";
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+
+        String cozulme_durumu="Çözülmedi";
+
+        alert.setTitle(" Şikayet Uyarısı");
+        alert.setHeaderText("Bu Şikayeti onaylıyor musunuz" +
+                "!");
+        alert.setContentText(String.format("Yapılan şikayet: %s TL\n " +
+                "Bu şikayeti onaylıyormusunuz?", sikayet_aciklamasi.getText()));
+
+        // "Yes" ve "No" butonları
+        ButtonType yesButton = new ButtonType("Evet");
+        ButtonType noButton = new ButtonType("Hayır");
+        alert.getButtonTypes().setAll(yesButton, noButton);
+
+        // Kullanıcı seçimini al
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == yesButton) {
+            try (FileInputStream fis = new FileInputStream(new File(resimyolu))) {
+                int fileLength = (int) new File(resimyolu).length();
+
+                // Veritabanına ekleme işlemi
+                int result1 = dbhelper.executeUpdatesikayet(insertSQL, PrimaryController.bina_no, PrimaryController.daire_no,sikayet_tarihi.getValue(), sikayet_aciklamasi.getText(), cozulme_durumu, fis, fileLength);
+
+                if (result1 > 0) {
+                    System.out.println("Veri başarıyla eklendi.");
+                    uyarı_lbl.setText("Kayıt başarıyla eklendi!");
+                } else {
+                    uyarı_lbl.setText("Veri ekleme başarısız.");
+                    System.err.println("Veri ekleme başarısız.");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                dbhelper.close();
+            }
+            GidertablosunuDoldur();
+            secilen_resim_url_lbl.setText(null);
+        }else{
+            System.out.println("onaylanmadı");
+
+        }
+
+
+
+
     }
 
+    public void dekontuac() {
+        try {
+            // Resim dosyasını JavaFX Image nesnesiyle okuma
+            File imageFile = new File(resimyolu);
+            if (!imageFile.exists()) {
+                throw new IOException("Resim dosyası bulunamadı.");
+            }
+
+            // JavaFX Image sınıfıyla resmi yükleyelim
+            Image image = new Image(imageFile.toURI().toString());
+
+            // Resmi göstermek için bir ImageView oluşturuyoruz
+            ImageView imageView = new ImageView(image);
+
+            // Ekran boyutlarını alıyoruz
+            double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
+            double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
+
+            // Resmin boyutunu ekran boyutuna göre sınırlıyoruz
+            imageView.setPreserveRatio(true);  // Orantılı boyutlandırma
+            imageView.setFitWidth(screenWidth * 0.9); // Ekranın %90'ine kadar sığdırıyoruz
+            imageView.setFitHeight(screenHeight * 0.9); // Ekranın %90'ine kadar sığdırıyoruz
+
+            // Yeni bir StackPane oluşturup resmi içine ekliyoruz
+            StackPane root = new StackPane();
+            root.getChildren().add(imageView);
+
+            // Yeni bir Stage oluşturuyoruz (Açılan pencere)
+            Stage imageStage = new Stage();
+            imageStage.setTitle("Resim Görüntüleyici");
+            imageStage.setScene(new Scene(root));
+
+            // Stage'i ekrana ortalıyoruz
+            imageStage.show();
+
+        } catch (Exception e) {
+            // Hata durumunda bir uyarı gösteriyoruz
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Hata");
+            alert.setHeaderText("Resim Yüklenemedi");
+            alert.setContentText("Resim dosyası yüklenemedi. Lütfen geçerli bir dosya seçin.\n" + e.getMessage());
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void dekontyukleme() throws IOException {
+        // FileChooser oluştur
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Dekont Yükle");
+
+        // Resim dosyaları için filtre ekle
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Resim Dosyaları", "*.png", "*.jpg", "*.jpeg", "*.bmp", "*.gif"),
+                new FileChooser.ExtensionFilter("Tüm Dosyalar", "*.*")
+        );
+
+        // FileChooser'ı göster ve dosya seç
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
+
+        // Seçilen dosyanın yolunu kontrol et ve işle
+        if (selectedFile != null) {
+            resimyolu = selectedFile.getAbsolutePath();
+
+            System.out.println("Seçilen resim yolu: " + resimyolu);
+            secilen_resim_url_lbl.setText(resimyolu);
+            dekontuac();
+
+            // Gerekirse bir etiket veya alan içinde yolu göster
+            // Örnek: bir TextField'e yazdırabilirsiniz
+            // diger_gider_tf.setText(resimyolu);
+        } else {
+            System.out.println("Hiçbir dosya seçilmedi.");
+        }
+    }
+    @FXML
+    private void idlisikayet() {
+        SQLHelper dphelper = new SQLHelper();
+
+        String selectSQL = "SELECT sikayet_resmi FROM sikayet_table WHERE ID = ? AND bina_no = ?";
+        try (ResultSet rs = dphelper.executeQuery(selectSQL, secilen_resim_spinner.getValue(), PrimaryController.bina_no)) {
+            if (rs.next()) {
+                // Veriyi alıyoruz
+                byte[] imageBytes = rs.getBytes("sikayet_resmi");
+
+                if (imageBytes != null && imageBytes.length > 0) {
+                    try (InputStream in = new ByteArrayInputStream(imageBytes)) {
+                        // Resim dosyasını JavaFX Image nesnesi ile yüklüyoruz
+                        Image image = new Image(in);
+
+                        // Resmi göstermek için bir ImageView oluşturuyoruz
+                        ImageView imageView = new ImageView(image);
+
+                        // Ekran boyutlarını alıyoruz
+                        double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
+                        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
+
+                        // Resmin boyutunu ekran boyutuna göre sınırlıyoruz
+                        imageView.setPreserveRatio(true);  // Orantılı boyutlandırma
+                        imageView.setFitWidth(screenWidth * 0.9); // Ekranın %90'ına kadar sığdırıyoruz
+                        imageView.setFitHeight(screenHeight * 0.9); // Ekranın %90'ına kadar sığdırıyoruz
+
+                        // Yeni bir StackPane oluşturup resmi içine ekliyoruz
+                        StackPane root = new StackPane(imageView);
+
+                        // Yeni bir Stage oluşturuyoruz (Açılan pencere)
+                        Stage imageStage = new Stage();
+                        imageStage.setTitle("Resim Görüntüleyici");
+                        imageStage.setScene(new Scene(root));
+
+                        // Stage'i ekrana ortalıyoruz
+                        imageStage.show();
+
+                    } catch (Exception e) {
+                        // Hata durumunda bir uyarı gösteriyoruz
+                        showAlert(Alert.AlertType.ERROR, "Hata", "Resim Yüklenemedi",
+                                "Resim dosyası yüklenemedi. Lütfen geçerli bir dosya seçin.\n" + e.getMessage());
+                    }
+                } else {
+                    showAlert(Alert.AlertType.WARNING, "Uyarı", "Dekont Bulunamadı",
+                            "Seçilen ID için dekont bulunamadı.");
+                }
+            } else {
+                ID_uyarı_lbl.setText("Yanlış ID");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Veritabanı Hatası", "Sorgu İşlemi Başarısız",
+                    "Veritabanına erişim sırasında bir hata oluştu.\n" + e.getMessage());
+        }
+    }
+    @FXML
+    private void grafikgit() throws IOException {
+        App.setRoot("grafikler");
+    }
     private void addHoverEffect(Control control) {
         control.setOnMouseEntered(event -> applyscaletransition(control,1.0,1.1));
         control.setOnMouseExited(event -> applyscaletransition(control,1.1,1.0));
@@ -283,11 +585,12 @@ public class kullaniciekraniController {
         alert.setContentText(content);
         alert.showAndWait();
     }
+    public static ObservableList<GiderVerisi> gelirListesi = FXCollections.observableArrayList();
 
     private void GidertablosunuDoldur() {
         SQLHelper dbhelper = new SQLHelper();
         String sql = "SELECT id,Bina_no, tarih, Gidar_Türü, miktar, dekont FROM Bina_Giderleri_table where Bina_no=?";
-        ObservableList<GiderVerisi> gelirListesi = FXCollections.observableArrayList();
+
 
         try (ResultSet rs = dbhelper.executeQuery(sql, PrimaryController.bina_no)) {
             while (rs.next()) {
