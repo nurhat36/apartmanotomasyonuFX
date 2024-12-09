@@ -226,7 +226,7 @@ public class kullaniciekraniController {
         });
     }
     @FXML
-    private void giderisqlegonder() {
+    private void sikayetisqlegonder() {
         SQLHelper dbhelper = new SQLHelper();
         String insertSQL = "INSERT INTO sikayet_table (bina_no,daire_no, tarih, sikayet, cozulme_durumu, sikayet_resmi) VALUES (?, ?, ?, ?, ?,?)";
         Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -279,7 +279,7 @@ public class kullaniciekraniController {
 
     }
 
-    public void dekontuac() {
+    public void sikayetac() {
         try {
             // Resim dosyasını JavaFX Image nesnesiyle okuma
             File imageFile = new File(resimyolu);
@@ -325,7 +325,7 @@ public class kullaniciekraniController {
     }
 
     @FXML
-    private void dekontyukleme() throws IOException {
+    private void sikayet_resmi_yukleme() throws IOException {
         // FileChooser oluştur
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Dekont Yükle");
@@ -345,7 +345,7 @@ public class kullaniciekraniController {
 
             System.out.println("Seçilen resim yolu: " + resimyolu);
             secilen_resim_url_lbl.setText(resimyolu);
-            dekontuac();
+            sikayetac();
 
             // Gerekirse bir etiket veya alan içinde yolu göster
             // Örnek: bir TextField'e yazdırabilirsiniz

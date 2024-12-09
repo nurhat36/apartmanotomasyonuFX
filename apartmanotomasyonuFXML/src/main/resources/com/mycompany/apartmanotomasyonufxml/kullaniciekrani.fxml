@@ -131,14 +131,14 @@
                         <TextArea fx:id="sikayet_aciklamasi" layoutX="8.0" layoutY="32.0" prefHeight="200.0" prefWidth="246.0" />
                         <Label layoutX="271.0" layoutY="14.0" prefHeight="18.0" prefWidth="330.0" text="Lütfen şikayetinizle ilhili bir resim veya kanıt resmi yükleyiniz." />
                         <Label fx:id="secilen_resim_url_lbl" layoutX="278.0" layoutY="85.0" prefHeight="18.0" prefWidth="330.0" />
-                        <Button fx:id="sikayet_resim_yukle" layoutX="278.0" layoutY="44.0" mnemonicParsing="false" onAction="#dekontyukleme" prefHeight="26.0" prefWidth="105.0" text="RESİM YÜKLE">
+                        <Button fx:id="sikayet_resim_yukle" layoutX="278.0" layoutY="44.0" mnemonicParsing="false" onAction="#sikayet_resmi_yukleme" prefHeight="26.0" prefWidth="105.0" text="RESİM YÜKLE">
                            <effect>
                               <DropShadow />
                            </effect>
                         </Button>
                         <Label fx:id="uyarı_lbl" layoutX="278.0" layoutY="213.0" prefHeight="18.0" prefWidth="330.0" />
                         <Label layoutX="631.0" layoutY="14.0" prefHeight="18.0" prefWidth="262.0" text="Şikayet IDsi girerek şikayet resmini görümtüleyin" />
-                        <Button fx:id="sikayet_resim_goruntule" layoutX="400.0" layoutY="44.0" mnemonicParsing="false" onAction="#dekontuac" prefHeight="26.0" prefWidth="105.0" text="GÖRÜNTÜLE">
+                        <Button fx:id="sikayet_resim_goruntule" layoutX="400.0" layoutY="44.0" mnemonicParsing="false" onAction="#sikayetac" prefHeight="26.0" prefWidth="105.0" text="GÖRÜNTÜLE">
                            <effect>
                               <DropShadow />
                            </effect>
@@ -150,7 +150,7 @@
                         </Button>
                         <Spinner fx:id="secilen_resim_spinner" layoutX="631.0" layoutY="44.0" />
                         <Label fx:id="ID_uyarı_lbl" layoutX="631.0" layoutY="123.0" prefHeight="18.0" prefWidth="168.0" />
-                        <Button fx:id="sikayet_onayla" layoutX="278.0" layoutY="175.0" mnemonicParsing="false" onAction="#giderisqlegonder" prefHeight="26.0" prefWidth="105.0" text="ONAYLA">
+                        <Button fx:id="sikayet_onayla" layoutX="278.0" layoutY="175.0" mnemonicParsing="false" onAction="#sikayetisqlegonder" prefHeight="26.0" prefWidth="105.0" text="ONAYLA">
                            <effect>
                               <DropShadow />
                            </effect>

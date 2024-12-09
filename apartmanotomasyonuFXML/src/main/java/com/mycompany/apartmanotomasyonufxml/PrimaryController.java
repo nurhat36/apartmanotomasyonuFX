@@ -118,6 +118,30 @@ public class PrimaryController {
         addHoverEffect(yon_kay_text_tek);
         addHoverEffect(yonetici_kaydol_pass_tek);
     }
+    @FXML
+    private void gorunurtf(){
+        kullanicigirispass.setText(textField.getText());
+    }
+    @FXML
+    private void gorunurtf2(){
+        kullanici_kaydol_pass.setText(kul_kay_text.getText());
+    }
+    @FXML
+    private void gorunurt3(){
+        kullanici_kaydol_pass_tek.setText(kul_kay_text_tek.getText());
+    }
+    @FXML
+    private void gorunurt4(){
+        yöneticigirispass.setText(yon_sif_textField.getText());
+    }
+    @FXML
+    private void gorunurt5(){
+        yonetici_kaydol_pass.setText(yon_kay_text.getText());
+    }
+    @FXML
+    private void gorunurt6(){
+        yonetici_kaydol_pass_tek.setText(yon_kay_text_tek.getText());
+    }
     private void addHoverEffect(Control control) {
        control.setOnMouseEntered(event -> applyscaletransition(control,1.0,1.1));
        control.setOnMouseExited(event -> applyscaletransition(control,1.1,1.0));

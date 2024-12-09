@@ -70,7 +70,7 @@
          <effect>
             <DropShadow />
          </effect></ToggleButton>
-      <TextField fx:id="kul_kay_text" layoutX="180.0" layoutY="253.0" visible="false" />
-      <TextField fx:id="kul_kay_text_tek" layoutX="181.0" layoutY="298.0" visible="false" />
+      <TextField fx:id="kul_kay_text" layoutX="180.0" layoutY="253.0" onKeyReleased="#gorunurt1" visible="false" />
+      <TextField fx:id="kul_kay_text_tek" layoutX="181.0" layoutY="298.0" onKeyReleased="#gorunurt2" visible="false" />
    </children>
 </AnchorPane>

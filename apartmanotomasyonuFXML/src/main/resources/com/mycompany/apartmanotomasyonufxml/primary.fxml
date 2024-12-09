@@ -57,7 +57,7 @@
                                              <effect>
                                                 <DropShadow />
                                              </effect></ToggleButton>
-                                          <TextField fx:id="textField" layoutX="143.0" layoutY="135.0">
+                                          <TextField fx:id="textField" layoutX="142.0" layoutY="135.0" onKeyReleased="#gorunurtf">
                                              <effect>
                                                 <DropShadow />
                                              </effect></TextField>
@@ -107,11 +107,11 @@
                                                 </ImageView>
                                              </children>
                                           </VBox>
-                                          <TextField fx:id="kul_kay_text" layoutX="144.0" layoutY="215.0">
+                                          <TextField fx:id="kul_kay_text" layoutX="144.0" layoutY="215.0" onKeyReleased="#gorunurtf2">
                                              <effect>
                                                 <DropShadow />
                                              </effect></TextField>
-                                          <TextField fx:id="kul_kay_text_tek" layoutX="143.0" layoutY="259.0">
+                                          <TextField fx:id="kul_kay_text_tek" layoutX="143.0" layoutY="259.0" onKeyTyped="#gorunurt3">
                                              <effect>
                                                 <DropShadow />
                                              </effect></TextField>
@@ -159,7 +159,7 @@
                                              <effect>
                                                 <DropShadow />
                                              </effect></ToggleButton>
-                                          <TextField fx:id="yon_sif_textField" layoutX="144.0" layoutY="106.0">
+                                          <TextField fx:id="yon_sif_textField" layoutX="144.0" layoutY="106.0" onKeyReleased="#gorunurt4">
                                              <effect>
                                                 <DropShadow />
                                              </effect></TextField>
@@ -209,11 +209,11 @@
                                                 </ImageView>
                                              </children>
                                           </VBox>
-                                          <TextField fx:id="yon_kay_text" layoutX="143.0" layoutY="215.0">
+                                          <TextField fx:id="yon_kay_text" layoutX="143.0" layoutY="215.0" onKeyReleased="#gorunurt5">
                                              <effect>
                                                 <DropShadow />
                                              </effect></TextField>
-                                          <TextField fx:id="yon_kay_text_tek" layoutX="145.0" layoutY="260.0">
+                                          <TextField fx:id="yon_kay_text_tek" layoutX="145.0" layoutY="260.0" onKeyReleased="#gorunurt6">
                                              <effect>
                                                 <DropShadow />
                                              </effect></TextField>

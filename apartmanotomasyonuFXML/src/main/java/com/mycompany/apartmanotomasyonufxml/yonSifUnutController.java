@@ -57,6 +57,14 @@ public class yonSifUnutController {
         addHoverEffect(yon_kay_toggleButton);
         addHoverEffect(yon_sif_degistir_Button);
     }
+    @FXML
+    private void gorunurt1(){
+        sif_unt_yeni_sif_pwf.setText(yon_kay_text.getText());
+    }
+    @FXML
+    private void gorunurt2(){
+        sif_unt_yenisifretekrar_pwf.setText(yon_kay_text_tek.getText());
+    }
     private void addHoverEffect(Control control) {
         control.setOnMouseEntered(event -> applyscaletransition(control,1.0,1.1));
         control.setOnMouseExited(event -> applyscaletransition(control,1.1,1.0));

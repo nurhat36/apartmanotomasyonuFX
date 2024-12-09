@@ -60,6 +60,14 @@ public class KulSifUnutController {
         addHoverEffect(sif_unt_yenisifretekrar_pwf);
         addHoverEffect(kul_kay_toggleButton);
     }
+    @FXML
+    private void gorunurt1(){
+        sif_unt_yeni_sif_pwf.setText(kul_kay_text.getText());
+    }
+    @FXML
+    private void gorunurt2(){
+        sif_unt_yenisifretekrar_pwf.setText(kul_kay_text_tek.getText());
+    }
     private void addHoverEffect(Control control) {
         control.setOnMouseEntered(event -> applyscaletransition(control,1.0,1.1));
         control.setOnMouseExited(event -> applyscaletransition(control,1.1,1.0));
