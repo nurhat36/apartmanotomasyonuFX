@@ -52,6 +52,8 @@ public class SecondaryController {
     @FXML
     private CheckBox secilen_durum_CheckBox2;
     @FXML
+    private CheckBox secilen_durum_CheckBox3;
+    @FXML
     private TextField diger_gider_tf;
     @FXML
     private Label butce1;
@@ -220,6 +222,7 @@ public class SecondaryController {
     private void secile_durumu_checkbox1() throws IOException {
         if (secilen_durum_CheckBox1.isSelected()) {
             secilen_durum_CheckBox2.setSelected(false);
+            secilen_durum_CheckBox3.setSelected(false);
 
         }
     }
@@ -227,6 +230,15 @@ public class SecondaryController {
     @FXML
     private void secile_durumu_checkbox2()  throws IOException {
         if (secilen_durum_CheckBox2.isSelected()) {
+            secilen_durum_CheckBox1.setSelected(false);
+            secilen_durum_CheckBox3.setSelected(false);
+
+        }
+    }
+    @FXML
+    private void secile_durumu_checkbox3() throws IOException {
+        if (secilen_durum_CheckBox3.isSelected()) {
+            secilen_durum_CheckBox2.setSelected(false);
             secilen_durum_CheckBox1.setSelected(false);
 
         }
@@ -237,6 +249,9 @@ public class SecondaryController {
             sikayet_durumu_guncelle("çözülmeye çalışılıyor");
         } else if (secilen_durum_CheckBox2.isSelected()) {
             sikayet_durumu_guncelle("çözüldü");
+        } else if (secilen_durum_CheckBox3.isSelected()) {
+            sikayet_durumu_guncelle("çözülmedi");
+
         } else{
             ID_uyarı_lbl.setText("lütfen bir durum işaretleyiniz.");
         }
