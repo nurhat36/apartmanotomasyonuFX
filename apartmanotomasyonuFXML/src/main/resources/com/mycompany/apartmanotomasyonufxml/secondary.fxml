@@ -197,15 +197,15 @@
                 <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                         <children>
-                            <TableView fx:id="sikayet_table" layoutX="-2.0" layoutY="232.0" prefHeight="390.0" prefWidth="864.0">
+                            <TableView fx:id="sikayet_table" layoutX="-2.0" layoutY="232.0" prefHeight="410.0" prefWidth="864.0">
                                 <columns>
                                     <TableColumn fx:id="sikayetidColumn" prefWidth="59.19998240470886" text="ID" />
                                     <TableColumn fx:id="sikayetbinaNoColumn" prefWidth="91.20000839233398" text="BİNA NO" />
                                     <TableColumn fx:id="sikayetdaireNoColumn" prefWidth="76.0" text="DAİRE NO" />
                                     <TableColumn fx:id="sikayettarihColumn" prefWidth="101.60005187988281" text="TARİH" />
                                     <TableColumn fx:id="sikayetturColumn" prefWidth="400.7999572753906" text="ŞİKAYET" />
-                                    <TableColumn fx:id="cozulmedurumuColumn" prefWidth="137.5999755859375" text="ÇÖZÜLME DOROMU" />
-                                    <TableColumn fx:id="sikayetresimColumn" minWidth="4.800048828125" prefWidth="4.800048828125" text="Column X" />
+                                    <TableColumn fx:id="cozulmedurumuColumn" prefWidth="134.400146484375" text="ÇÖZÜLME DOROMU" />
+                                    <TableColumn fx:id="sikayetresimColumn" minWidth="1.220703125E-4" prefWidth="89.599853515625" text="Column X" />
                                 </columns>
                             </TableView>
                             <Label layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="246.0" text="Lütfen şikayetinizin ne olduğunu açıklayınız" />
@@ -231,16 +231,16 @@
                             </Button>
                             <Spinner fx:id="secilen_resim_spinner" layoutX="631.0" layoutY="44.0" />
                             <Label fx:id="ID_uyarı_lbl" layoutX="631.0" layoutY="114.0" prefHeight="18.0" prefWidth="168.0" />
-                            <Button fx:id="sikayet_onayla" layoutX="278.0" layoutY="175.0" mnemonicParsing="false" onAction="#sikayetisqlegonder" prefHeight="26.0" prefWidth="105.0" text="ONAYLA">
+                            <Button fx:id="sikayet_onayla" layoutX="278.0" layoutY="175.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="105.0" text="ONAYLA">
                                 <effect>
                                     <DropShadow />
                                 </effect>
                             </Button>
                             <Label layoutX="278.0" layoutY="114.0" prefHeight="18.0" prefWidth="194.0" text="Şikayeti ilk farkettiğiniz tarihi giriniz" />
                             <DatePicker fx:id="sikayet_tarihi" layoutX="278.0" layoutY="141.0" />
-                        <CheckBox fx:id="secilen_durum_CheckBox1" layoutX="631.0" layoutY="163.0" mnemonicParsing="false" onAction="#secile_durumu_checkbox1" prefHeight="23.0" prefWidth="144.0" text="Çözülmeye çalışılıyor" />
+                        <CheckBox fx:id="secilen_durum_CheckBox1" layoutX="631.0" layoutY="163.0" mnemonicParsing="false" onAction="#secile_durumu_checkbox1" prefHeight="23.0" prefWidth="144.0" text="çözülmeye çalışılıyor" />
                         <Label fx:id="ID_uyarı_lbl1" layoutX="631.0" layoutY="144.0" prefHeight="18.0" prefWidth="227.0" text="Şikayetin çözülme durumunu işaretleyiniz." />
-                        <CheckBox fx:id="secilen_durum_CheckBox2" layoutX="631.0" layoutY="189.0" mnemonicParsing="false" onAction="#secile_durumu_checkbox2" prefHeight="23.0" prefWidth="96.0" text="Çözüldü" />
+                        <CheckBox fx:id="secilen_durum_CheckBox2" layoutX="631.0" layoutY="189.0" mnemonicParsing="false" onAction="#secile_durumu_checkbox2" prefHeight="23.0" prefWidth="96.0" text="çözüldü" />
                         <Button fx:id="sikayet_durumu_onayla" layoutX="781.0" layoutY="187.0" mnemonicParsing="false" onAction="#secilen_sikayet_durumu" prefHeight="26.0" prefWidth="66.0" text="ONAYLA">
                            <effect>
                               <DropShadow />
