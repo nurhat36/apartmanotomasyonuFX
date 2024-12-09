@@ -231,7 +231,7 @@
                             </Button>
                             <Spinner fx:id="secilen_resim_spinner" layoutX="631.0" layoutY="44.0" />
                             <Label fx:id="ID_uyarı_lbl" layoutX="631.0" layoutY="114.0" prefHeight="18.0" prefWidth="168.0" />
-                            <Button fx:id="sikayet_onayla" layoutX="278.0" layoutY="175.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="105.0" text="ONAYLA">
+                            <Button fx:id="sikayet_onayla" layoutX="278.0" layoutY="175.0" mnemonicParsing="false" onAction="#sikayetisqlegonder" prefHeight="26.0" prefWidth="105.0" text="ONAYLA">
                                 <effect>
                                     <DropShadow />
                                 </effect>
