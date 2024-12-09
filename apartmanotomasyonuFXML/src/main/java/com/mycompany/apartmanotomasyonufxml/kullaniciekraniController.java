@@ -152,37 +152,7 @@ public class kullaniciekraniController {
         sikayetresimColumn.setCellValueFactory(new PropertyValueFactory<>("dekont"));
         butceyaz();
         sikayettablosunuDoldur();
-        cozulmedurumuColumn.setCellFactory(column -> {
-            return new TableCell<Sikayetler, Object>() {
-                @Override
-                protected void updateItem(Object item, boolean empty) {
-                    super.updateItem(item, empty);
 
-                    if (empty || item == null) {
-                        setText(null);
-                        setStyle("");
-                        return;
-                    }
-
-                    setText(item.toString());
-                    String cozulmeDurumu = item.toString().toLowerCase();
-                    switch (cozulmeDurumu) {
-                        case "çözülmedi":
-                            setStyle("-fx-background-color: red; -fx-text-fill: white;");
-                            break;
-                        case "çözüldü":
-                            setStyle("-fx-background-color: green; -fx-text-fill: white;");
-                            break;
-                        case "çözülmeye çalışılıyor":
-                            setStyle("-fx-background-color: yellow; -fx-text-fill: black;");
-                            break;
-                        default:
-                            setStyle("");
-                            break;
-                    }
-                }
-            };
-        });
         aidatyaz();
         gelirlerdoldur();
         GidertablosunuDoldur();
@@ -223,6 +193,37 @@ public class kullaniciekraniController {
 
         // Tabloya verileri ekle
         sikayet_table.setItems(sikayetListesi);
+        cozulmedurumuColumn.setCellFactory(column -> {
+            return new TableCell<Sikayetler, Object>() {
+                @Override
+                protected void updateItem(Object item, boolean empty) {
+                    super.updateItem(item, empty);
+
+                    if (empty || item == null) {
+                        setText(null);
+                        setStyle("");
+                        return;
+                    }
+
+                    setText(item.toString());
+                    String cozulmeDurumu = item.toString().toLowerCase();
+                    switch (cozulmeDurumu) {
+                        case "çözülmedi":
+                            setStyle("-fx-background-color: red; -fx-text-fill: white;");
+                            break;
+                        case "çözüldü":
+                            setStyle("-fx-background-color: green; -fx-text-fill: white;");
+                            break;
+                        case "çözülmeye çalışılıyor":
+                            setStyle("-fx-background-color: yellow; -fx-text-fill: black;");
+                            break;
+                        default:
+                            setStyle("");
+                            break;
+                    }
+                }
+            };
+        });
     }
     @FXML
     private void giderisqlegonder() {
@@ -271,6 +272,7 @@ public class kullaniciekraniController {
             System.out.println("onaylanmadı");
 
         }
+        sikayettablosunuDoldur();
 
 
 

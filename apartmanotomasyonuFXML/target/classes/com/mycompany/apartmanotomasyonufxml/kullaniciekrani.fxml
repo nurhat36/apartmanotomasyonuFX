@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -66,7 +68,7 @@
           </Tab>
           <Tab text="BİNA GİDERLERİ">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" onDragDetected="#grafikgit" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TableView fx:id="Gider_table" layoutY="221.0" prefHeight="396.0" prefWidth="910.0">
                           <columns>
@@ -100,11 +102,65 @@
                               </ImageView>
                            </children>
                         </VBox>
+                        <Button fx:id="grafikgit" layoutX="14.0" layoutY="188.0" mnemonicParsing="false" onAction="#grafikgit" prefHeight="26.0" prefWidth="162.0" text="GRAFİKLERİ GÖRÜNTÜLE">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Button>
 
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
+            <Tab text="ŞİKAYET">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="sikayet_table" layoutX="-2.0" layoutY="232.0" prefHeight="390.0" prefWidth="910.0">
+                          <columns>
+                              <TableColumn fx:id="sikayetidColumn" prefWidth="59.19998240470886" text="ID" />
+                            <TableColumn fx:id="sikayetbinaNoColumn" prefWidth="91.20000839233398" text="BİNA NO" />
+                            <TableColumn fx:id="sikayetdaireNoColumn" prefWidth="76.0" text="DAİRE NO" />
+                              <TableColumn fx:id="sikayettarihColumn" prefWidth="101.60005187988281" text="TARİH" />
+                              <TableColumn fx:id="sikayetturColumn" prefWidth="419.20001220703125" text="ŞİKAYET" />
+                              <TableColumn fx:id="cozulmedurumuColumn" prefWidth="164.8001708984375" text="ÇÖZÜLME DOROMU" />
+                              <TableColumn fx:id="sikayetresimColumn" prefWidth="42.39990234375" text="Column X" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="246.0" text="Lütfen şikayetinizin ne olduğunu açıklayınız" />
+                        <TextArea fx:id="sikayet_aciklamasi" layoutX="8.0" layoutY="32.0" prefHeight="200.0" prefWidth="246.0" />
+                        <Label layoutX="271.0" layoutY="14.0" prefHeight="18.0" prefWidth="330.0" text="Lütfen şikayetinizle ilhili bir resim veya kanıt resmi yükleyiniz." />
+                        <Label fx:id="secilen_resim_url_lbl" layoutX="278.0" layoutY="85.0" prefHeight="18.0" prefWidth="330.0" />
+                        <Button fx:id="sikayet_resim_yukle" layoutX="278.0" layoutY="44.0" mnemonicParsing="false" onAction="#dekontyukleme" prefHeight="26.0" prefWidth="105.0" text="RESİM YÜKLE">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Button>
+                        <Label fx:id="uyarı_lbl" layoutX="278.0" layoutY="213.0" prefHeight="18.0" prefWidth="330.0" />
+                        <Label layoutX="631.0" layoutY="14.0" prefHeight="18.0" prefWidth="262.0" text="Şikayet IDsi girerek şikayet resmini görümtüleyin" />
+                        <Button fx:id="sikayet_resim_goruntule" layoutX="400.0" layoutY="44.0" mnemonicParsing="false" onAction="#dekontuac" prefHeight="26.0" prefWidth="105.0" text="GÖRÜNTÜLE">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Button>
+                        <Button fx:id="secilen_resim_gor" layoutX="631.0" layoutY="81.0" mnemonicParsing="false" onAction="#idlisikayet" prefHeight="26.0" prefWidth="105.0" text="GÖRÜNTÜLE">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Button>
+                        <Spinner fx:id="secilen_resim_spinner" layoutX="631.0" layoutY="44.0" />
+                        <Label fx:id="ID_uyarı_lbl" layoutX="631.0" layoutY="123.0" prefHeight="18.0" prefWidth="168.0" />
+                        <Button fx:id="sikayet_onayla" layoutX="278.0" layoutY="175.0" mnemonicParsing="false" onAction="#giderisqlegonder" prefHeight="26.0" prefWidth="105.0" text="ONAYLA">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Button>
+                        <Label layoutX="278.0" layoutY="114.0" prefHeight="18.0" prefWidth="194.0" text="Şikayeti ilk farkettiğiniz tarihi giriniz" />
+                        <DatePicker fx:id="sikayet_tarihi" layoutX="278.0" layoutY="141.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>
