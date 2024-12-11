@@ -169,6 +169,7 @@ public class SecondaryController {
     private TableColumn<Sikayetler, Object> cozulmedurumuColumn;
     @FXML
     private TableColumn<Sikayetler, Object> sikayetresimColumn;
+    private ToggleGroup togglegroup;
 
     @FXML
     public void initialize() {
@@ -216,6 +217,7 @@ public class SecondaryController {
         addHoverEffect(secilen_resim_gor);
         addHoverEffect(sikayet_onayla);
         addHoverEffect(sikayet_durumu_onayla);
+
 
     }
     @FXML

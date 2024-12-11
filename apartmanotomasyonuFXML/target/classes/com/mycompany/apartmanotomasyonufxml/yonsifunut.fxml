@@ -58,7 +58,7 @@
          <effect>
             <DropShadow />
          </effect></ToggleButton>
-      <TextField fx:id="yon_kay_text" layoutX="172.0" layoutY="210.0" prefHeight="26.0" prefWidth="154.0" visible="false" />
-      <TextField fx:id="yon_kay_text_tek" layoutX="173.0" layoutY="253.0" prefHeight="26.0" prefWidth="150.0" visible="false" />
+      <TextField fx:id="yon_kay_text" layoutX="172.0" layoutY="210.0" onKeyReleased="#gorunurt1" prefHeight="26.0" prefWidth="154.0" visible="false" />
+      <TextField fx:id="yon_kay_text_tek" layoutX="173.0" layoutY="253.0" onKeyReleased="#gorunurt2" prefHeight="26.0" prefWidth="150.0" visible="false" />
    </children>
 </AnchorPane>
