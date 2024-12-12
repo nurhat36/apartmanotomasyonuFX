@@ -15,12 +15,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="437.0" prefWidth="473.0" spacing="20.0" style="-fx-background-color: #9249ff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.apartmanotomasyonufxml.PrimaryController">
+<VBox alignment="CENTER" prefHeight="437.0" prefWidth="473.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.apartmanotomasyonufxml.PrimaryController">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <children>
-      <TabPane prefHeight="439.0" prefWidth="434.0" style="-fx-background-color: #a3a4ff;" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="439.0" prefWidth="434.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Kullanıcı Giriş ">
             <content>
@@ -30,7 +30,7 @@
                           <tabs>
                             <Tab text="Giriş Yap">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #28d7ff;">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <TextField fx:id="kullanıcıbinano_jtf1" layoutX="143.0" layoutY="44.0" onKeyReleased="#cmbdolur" promptText="Lütfen Bina No'yu giriniz">
                                              <effect>
@@ -48,7 +48,7 @@
                                              <effect>
                                                 <DropShadow />
                                              </effect></Button>
-                                          <Button fx:id="kul_unut_Button" layoutX="170.0" layoutY="248.0" mnemonicParsing="false" onAction="#switchTokulsifunut" style="-fx-background-color: #c78cff;" text="Şifremi Unuttum">
+                                          <Button fx:id="kul_unut_Button" layoutX="170.0" layoutY="248.0" mnemonicParsing="false" onAction="#switchTokulsifunut" text="Şifremi Unuttum">
                                              <effect>
                                                 <DropShadow />
                                              </effect></Button>
@@ -62,15 +62,12 @@
                                                 <DropShadow />
                                              </effect></TextField>
                                        </children>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
                                     </AnchorPane>
                               </content>
                             </Tab>
                             <Tab text="Kaydol">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #28d7ff;">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <TextField fx:id="kullanıcıbinanokayıt_jtf1" layoutX="143.0" layoutY="37.0" onKeyReleased="#cmbdolurkayıt" promptText="Bina No'yu Giriniz">
                                              <effect>
@@ -140,7 +137,7 @@
                           <tabs>
                             <Tab text="Giriş Yap">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="231.0" prefWidth="298.0" style="-fx-background-color: #a3a4ff;">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="231.0" prefWidth="298.0">
                                        <children>
                                           <TextField fx:id="yoneticibinano_jtf1" layoutX="142.0" layoutY="46.0" promptText="Lütfen Bina Noyu giriniz">
                                              <effect>
@@ -172,7 +169,7 @@
                             </Tab>
                             <Tab text="Kaydol">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: a3a4ff;">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <TextField fx:id="yonetici_kayit_binano_jtf1" layoutX="143.0" layoutY="30.0" promptText="Lütfen bina No'yu girinizi">
                                              <effect>

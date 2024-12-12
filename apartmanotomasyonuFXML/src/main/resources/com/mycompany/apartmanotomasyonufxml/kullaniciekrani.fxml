@@ -125,7 +125,7 @@
                             <TableColumn fx:id="sikayetdaireNoColumn" prefWidth="76.0" text="DAİRE NO" />
                               <TableColumn fx:id="sikayettarihColumn" prefWidth="101.60005187988281" text="TARİH" />
                               <TableColumn fx:id="sikayetturColumn" prefWidth="419.20001220703125" text="ŞİKAYET" />
-                              <TableColumn fx:id="cozulmedurumuColumn" prefWidth="160.0001220703125" text="ÇÖZÜLME DOROMU" />
+                              <TableColumn fx:id="cozulmedurumuColumn" prefWidth="160.0001220703125" text="ÇÖZÜLME DURUMU" />
                               <TableColumn fx:id="sikayetresimColumn" prefWidth="48.7999267578125" text="ŞİKAYET RESMİ" />
                           </columns>
                         </TableView>
@@ -152,7 +152,7 @@
                         </Button>
                         <Spinner fx:id="secilen_resim_spinner" layoutX="631.0" layoutY="44.0" />
                         <Label fx:id="ID_uyarı_lbl" layoutX="631.0" layoutY="123.0" prefHeight="18.0" prefWidth="168.0" />
-                        <Button fx:id="sikayet_onayla" layoutX="278.0" layoutY="175.0" mnemonicParsing="false" onAction="#sikayetisqlegonder" prefHeight="26.0" prefWidth="105.0" text="ONAYLA">
+                        <Button fx:id="sikayet_onayla" layoutX="278.0" layoutY="175.0" mnemonicParsing="false" onAction="#sikayetisqlegonder" prefHeight="26.0" prefWidth="105.0" style="-fx-background-color: #ff5151;" text="ONAYLA">
                            <effect>
                               <DropShadow />
                            </effect>
