@@ -24,9 +24,15 @@ public class Grafikler {
 
         XYChart.Series<String, Number> barSeries = new XYChart.Series<>();
         barSeries.setName("Gider Türleri");
+        List<GiderVerisi> giderListesi;
+        if (SecondaryController.isactivyoneyici) {
+            giderListesi = SecondaryController.gelirListesi;
+        } else {
+            giderListesi = kullaniciekraniController.gelirListesi;
+        }
 
         // Gider verisi listesini oluşturuyoruz (örnek olarak)
-        List<GiderVerisi> giderListesi = SecondaryController.gelirListesi;
+
 
         // Aynı tarihe sahip giderlerin toplamını hesapla
         Map<String, Double> tarihToplamMap = new HashMap<>();

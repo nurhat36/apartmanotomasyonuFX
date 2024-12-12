@@ -170,9 +170,11 @@ public class SecondaryController {
     @FXML
     private TableColumn<Sikayetler, Object> sikayetresimColumn;
     private ToggleGroup togglegroup;
+    public static boolean isactivyoneyici;
 
     @FXML
     public void initialize() {
+        isactivyoneyici = true;
 
         binaNoColumn.setCellValueFactory(new PropertyValueFactory<>("binaNo"));
         daireNoColumn.setCellValueFactory(new PropertyValueFactory<>("daireNo"));
