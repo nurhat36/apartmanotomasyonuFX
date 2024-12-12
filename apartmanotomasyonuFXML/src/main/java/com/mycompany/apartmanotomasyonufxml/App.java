@@ -49,7 +49,7 @@ public class App extends Application {
 
     public static void main(String[] args) {
         SQLHelper sql = new SQLHelper();
-        launch();
+        launch();// // JavaFX uygulamasını başlatır. Bu, `start` metodunu çağırır.
     }
 
 }

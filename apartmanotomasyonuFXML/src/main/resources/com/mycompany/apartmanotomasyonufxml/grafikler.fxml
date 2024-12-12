@@ -6,7 +6,7 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="1064.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.apartmanotomasyonufxml.Grafikler">
+<AnchorPane prefHeight="400.0" prefWidth="1064.0" style="-fx-background-color: #ffd0a5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.apartmanotomasyonufxml.Grafikler">
     <children>
         <LineChart fx:id="grafik" title="Grafik Örneği">
             <xAxis>

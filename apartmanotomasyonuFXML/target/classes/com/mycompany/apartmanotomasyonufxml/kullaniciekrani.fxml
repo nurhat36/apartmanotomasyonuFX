@@ -17,13 +17,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<!--bu şekilde yazılmış . xml fxml uzantılı classlar böyle-->
+
 <AnchorPane id="AnchorPane" prefHeight="646.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.apartmanotomasyonufxml.kullaniciekraniController">
    <children>
       <TabPane prefHeight="646.0" prefWidth="908.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="AİDATLARINIZ">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #ffd0a5;">
                      <children>
                         <TableView fx:id="Gelir_table" layoutY="209.0" prefHeight="410.0" prefWidth="999.0">
                           <columns>
@@ -45,7 +47,7 @@
                         </Label>
                         <VBox layoutX="269.0" layoutY="37.0" prefHeight="101.0" prefWidth="198.0">
                            <children>
-                              <ImageView fitHeight="101.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="101.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #ffd0a5;">
                                  <image>
                                     <Image url="@/mahalle2.png" />
                                  </image>

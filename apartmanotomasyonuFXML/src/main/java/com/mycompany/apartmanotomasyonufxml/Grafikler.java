@@ -31,8 +31,6 @@ public class Grafikler {
             giderListesi = kullaniciekraniController.gelirListesi;
         }
 
-        // Gider verisi listesini oluşturuyoruz (örnek olarak)
-
 
         // Aynı tarihe sahip giderlerin toplamını hesapla
         Map<String, Double> tarihToplamMap = new HashMap<>();
