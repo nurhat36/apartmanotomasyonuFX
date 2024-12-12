@@ -152,7 +152,7 @@
                                              <effect>
                                                 <DropShadow />
                                              </effect></Button>
-                                          <Button fx:id="yon_unut_Button" layoutX="161.0" layoutY="210.0" mnemonicParsing="false" onAction="#switchToyonsifunut" prefHeight="26.0" prefWidth="122.0" text="Şifremi Unuttum">
+                                          <Button fx:id="yon_unut_Button" layoutX="161.0" layoutY="210.0" mnemonicParsing="false" onAction="#switchToyonsifunut" prefHeight="26.0" prefWidth="122.0" style="-fx-background-color: #ff5151;" text="Şifremi Unuttum">
                                              <effect>
                                                 <DropShadow />
                                              </effect></Button>
