@@ -514,7 +514,7 @@ public class SecondaryController {
                             setStyle("-fx-background-color: red; -fx-text-fill: white;");
                             break;
                         case "çözüldü":
-                            setStyle("-fx-background-color: green; -fx-text-fill: white;");
+                            setStyle("-fx-background-color: #09e22d; -fx-text-fill: white;");
                             break;
                         case "çözülmeye çalışılıyor":
                             setStyle("-fx-background-color: yellow; -fx-text-fill: black;");
