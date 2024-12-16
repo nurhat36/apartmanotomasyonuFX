@@ -117,7 +117,7 @@ public class yonSifUnutController {
             while (rs != null && rs.next()) {
                 int count = rs.getInt(1);
                 if (count == 0) {
-                    // Eğer kayıt varsa, hata mesajı
+                    // Eğer kayıt yoksa, hata mesajı
                     Sif_Unt_kon_jlbl.setText("Bu bina no ve daire no için kayıt bulunmuyor!");
                     Sif_Unt_kon_jlbl.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
                     return;  // İşlem sonlandırılır

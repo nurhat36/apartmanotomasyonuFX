@@ -236,7 +236,7 @@ public class kullaniciekraniController {
         alert.setTitle(" Şikayet Uyarısı");
         alert.setHeaderText("Bu Şikayeti onaylıyor musunuz" +
                 "!");
-        alert.setContentText(String.format("Yapılan şikayet: %s TL\n " +
+        alert.setContentText(String.format("Yapılan şikayet: %s \n " +
                 "Bu şikayeti onaylıyormusunuz?", sikayet_aciklamasi.getText()));
 
         // "Yes" ve "No" butonları

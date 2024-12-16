@@ -44,6 +44,7 @@ public class SecondaryController {
     @FXML
     private CheckBox jCheckBox4;
     @FXML
+
     private CheckBox jCheckBox5;
     @FXML
     private CheckBox jCheckBox6;
@@ -295,7 +296,7 @@ public class SecondaryController {
         alert.setTitle(" Şikayet Uyarısı");
         alert.setHeaderText("Bu Şikayeti onaylıyor musunuz" +
                 "!");
-        alert.setContentText(String.format("Yapılan şikayet: %s TL\n " +
+        alert.setContentText(String.format("Yapılan şikayet: %s \n " +
                 "Bu şikayeti onaylıyormusunuz?", sikayet_aciklamasi.getText()));
 
         // "Yes" ve "No" butonları
