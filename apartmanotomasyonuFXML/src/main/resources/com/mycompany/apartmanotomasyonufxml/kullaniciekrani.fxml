@@ -87,7 +87,7 @@
                               <Label layoutX="39.0" layoutY="14.0" prefHeight="18.0" prefWidth="155.0" text="Gider Dekontunu Görüntüle" />
                               <Spinner fx:id="dekontID" layoutX="42.0" layoutY="55.0" />
                               <Label layoutX="39.0" layoutY="37.0" prefHeight="18.0" prefWidth="155.0" text="Dekont ID" />
-                              <Button fx:id="kull_ekr_dekont_gör_Button" layoutX="57.0" layoutY="98.0" mnemonicParsing="false" onAction="#idlidekont" text="Dekontu Görüntüle">
+                              <Button fx:id="kull_ekr_dekont_gör_Button" layoutX="57.0" layoutY="98.0" mnemonicParsing="false" onAction="#idlidekont" style="-fx-background-color: #ff5151;" text="Dekontu Görüntüle">
                                  <effect>
                                     <DropShadow />
                                  </effect></Button>
@@ -104,7 +104,7 @@
                               </ImageView>
                            </children>
                         </VBox>
-                        <Button fx:id="grafikgit" layoutX="14.0" layoutY="188.0" mnemonicParsing="false" onAction="#grafikgit" prefHeight="26.0" prefWidth="162.0" text="GRAFİKLERİ GÖRÜNTÜLE">
+                        <Button fx:id="grafikgit" layoutX="14.0" layoutY="188.0" mnemonicParsing="false" onAction="#grafikgit" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #ff5151;" text="GRAFİKLERİ GÖRÜNTÜLE">
                            <effect>
                               <DropShadow />
                            </effect>
